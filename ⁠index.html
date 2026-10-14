@@ -1,557 +1,382 @@
-⁠<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MexiBloom - Drinks, Snacks & Specials</title>
-  <!-- Tailwind CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MexiBloom - Drinks, Sweets & Cravings</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <!-- Google Fonts: Poppins & Permanent Marker for Festive Header Vibe -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            mexiPink: '#FF007F',
-            mexiGreen: '#39FF14',
-            mexiYellow: '#FFD700',
-            mexiDark: '#121212',
-            mexiCard: '#1E1E1E'
-          },
-          fontFamily: {
-            sans: ['Poppins', 'sans-serif'],
-            display: ['Fredoka', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #0d0d0d;
-      color: #ffffff;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Outfit', sans-serif;
+      background-color: #0b0f19;
+      color: #f3f4f6;
     }
-
-    .neon-border-pink {
-      border: 2px solid #FF007F;
-      box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+    .font-heading {
+      font-family: 'Fredoka', cursive;
     }
-
-    .neon-border-green {
-      border: 2px solid #39FF14;
-      box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+    .neon-pink { color: #ff1493; }
+    .bg-neon-pink { background-color: #ff1493; }
+    .border-neon-pink { border-color: #ff1493; }
+    
+    .neon-green { color: #39ff14; }
+    .bg-neon-green { background-color: #39ff14; }
+    .border-neon-green { border-color: #39ff14; }
+    
+    .neon-yellow { color: #fff01f; }
+    .bg-neon-yellow { background-color: #fff01f; }
+    
+    .glow-pink:hover {
+      box-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
     }
-
-    .neon-border-yellow {
-      border: 2px solid #FFD700;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    .glow-green:hover {
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
     }
-
-    .text-glow-pink {
-      text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+    .tab-active {
+      background-color: #ff1493 !important;
+      color: #ffffff !important;
+      border-color: #ff1493 !important;
     }
-
-    .text-glow-yellow {
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    }
-
-    .text-glow-green {
-      text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #121212;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #FF007F;
-      border-radius: 4px;
+    .subtab-active {
+      background-color: #39ff14 !important;
+      color: #000000 !important;
+      font-weight: bold;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-mexiPink selection:text-white">
+<body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 bg-mexiDark/95 backdrop-blur-md border-b border-mexiPink/30 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between">
-      
-      <!-- Brand & Tagline -->
-      <a href="#home" onclick="showSection('home')" class="flex items-center space-x-3 group">
-        <div class="w-12 h-12 rounded-full border-2 border-mexiGreen flex items-center justify-center bg-black overflow-hidden shadow-md">
-          <i class="fa-solid font-bold text-2xl text-mexiPink fa-flower">🌺</i>
+  <!-- Header / Navbar -->
+  <header class="bg-gray-900/90 backdrop-blur border-b border-pink-500/30 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full border-2 border-pink-500 bg-black flex items-center justify-center overflow-hidden font-heading text-xl text-pink-500 font-bold">
+          MB
         </div>
         <div>
-          <span class="font-display font-extrabold text-2xl md:text-3xl text-mexiPink tracking-wide group-hover:text-mexiYellow transition">
-            MexiBloom
-          </span>
-          <p class="text-xs text-mexiGreen font-medium tracking-wider">
-            Made with love • Hecho con amor
-          </p>
+          <h1 class="font-heading text-2xl text-white tracking-wide">Mexi<span class="neon-pink">Bloom</span></h1>
+          <p class="text-xs text-gray-400">Made with love • Hecho con amor</p>
         </div>
-      </a>
-
-      <!-- Location Badge -->
-      <div class="hidden md:flex items-center space-x-2 bg-neutral-900 px-3 py-1.5 rounded-full border border-mexiYellow/40">
-        <i class="fa-solid fa-location-dot text-mexiPink"></i>
-        <span class="text-xs font-semibold text-mexiYellow">Wills Point, TX</span>
       </div>
 
-      <!-- Navigation Tabs -->
-      <nav class="w-full md:w-auto mt-3 md:mt-0 flex items-center justify-around space-x-1 sm:space-x-2 text-xs sm:text-sm font-semibold overflow-x-auto pb-1 md:pb-0">
-        <button onclick="showSection('drinks')" id="nav-drinks" class="nav-btn px-3 py-2 rounded-xl transition-all duration-200 text-gray-300 hover:text-white hover:bg-neutral-800 flex items-center gap-1.5">
-          <i class="fa-solid fa-mug-hot text-mexiPink"></i> Drinks
+      <!-- Main Navigation -->
+      <nav class="flex flex-wrap justify-center gap-2">
+        <button onclick="switchTab('drinks')" id="nav-drinks" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-700 bg-gray-800 text-gray-300 transition tab-active glow-pink">
+          <i class="fa-solid font-bold fa-glass-water mr-1.5"></i>Drinks Menu
         </button>
-        <button onclick="showSection('snacks')" id="nav-snacks" class="nav-btn px-3 py-2 rounded-xl transition-all duration-200 text-gray-300 hover:text-white hover:bg-neutral-800 flex items-center gap-1.5">
-          <i class="fa-solid fa-cookie-bite text-mexiYellow"></i> Cravings
+        <button onclick="switchTab('cravings')" id="nav-cravings" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-700 bg-gray-800 text-gray-300 transition glow-pink">
+          <i class="fa-solid fa-cookie-bite mr-1.5"></i>Cravings
         </button>
-        <button onclick="showSection('specials')" id="nav-specials" class="nav-btn px-3 py-2 rounded-xl transition-all duration-200 text-gray-300 hover:text-white hover:bg-neutral-800 flex items-center gap-1.5">
-          <i class="fa-solid fa-fire text-mexiGreen"></i> Thursday Specials
+        <button onclick="switchTab('specials')" id="nav-specials" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-yellow-500/50 bg-gray-800 text-yellow-400 transition glow-green">
+          <i class="fa-solid fa-fire-flame-curry mr-1.5"></i>Thursday Specials
         </button>
-        <button onclick="showSection('about')" id="nav-about" class="nav-btn px-3 py-2 rounded-xl transition-all duration-200 text-gray-300 hover:text-white hover:bg-neutral-800 flex items-center gap-1.5">
-          <i class="fa-solid fa-users text-mexiPink"></i> About Us
+        <button onclick="switchTab('about')" id="nav-about" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-700 bg-gray-800 text-gray-300 transition glow-pink">
+          <i class="fa-solid fa-users mr-1.5"></i>About Us
         </button>
       </nav>
-
     </div>
   </header>
 
-  <main class="flex-grow">
-    
-    <!-- Hero / Welcome Banner (Always Header on Home view) -->
-    <section id="hero-banner" class="relative bg-gradient-to-b from-neutral-900 to-black py-12 px-4 text-center border-b border-neutral-800">
-      <div class="max-w-4xl mx-auto space-y-4">
-        <div class="inline-block px-4 py-1.5 rounded-full border border-mexiGreen text-mexiGreen font-bold text-xs sm:text-sm tracking-widest uppercase mb-2">
-          ✨ Test Menu & Flavor Preview
-        </div>
-        <h1 class="font-display text-4xl sm:text-6xl font-extrabold text-white tracking-tight">
-          Welcome to <span class="text-mexiPink text-glow-pink">MexiBloom</span>
-        </h1>
-        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto font-light">
-          Crafting artisan lattes, refreshing dragonfruit lemonades, authentic boba, and irresistible sweet & savory Mexican cravings right here in <strong class="text-mexiYellow">Wills Point, TX</strong>!
-        </p>
+  <!-- Main Content Area -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
 
-        <!-- CTA Buttons -->
-        <div class="pt-4 flex flex-wrap justify-center gap-4">
-          <button onclick="showSection('drinks')" class="px-6 py-3 rounded-xl bg-mexiPink text-white font-bold text-sm shadow-lg hover:bg-pink-600 transition flex items-center gap-2 transform hover:-translate-y-0.5">
-            <i class="fa-solid fa-glass-water"></i> Explore Drink Menu
-          </button>
-          <button onclick="showSection('specials')" class="px-6 py-3 rounded-xl border border-mexiYellow text-mexiYellow hover:bg-mexiYellow hover:text-black font-bold text-sm transition flex items-center gap-2 transform hover:-translate-y-0.5">
-            <i class="fa-solid fa-drumstick-bite"></i> Thursday Brisket Special
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 1: DRINKS -->
-    <section id="sec-drinks" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-neutral-800 gap-4">
-        <div>
-          <span class="text-mexiGreen font-bold tracking-widest text-xs uppercase">Handcrafted Beverages</span>
-          <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white mt-1">Our Drink Menu</h2>
-        </div>
-
-        <!-- Category Filters -->
-        <div class="flex flex-wrap gap-2 text-xs sm:text-sm">
-          <button onclick="filterDrinks('all')" class="drink-filter-btn px-4 py-2 rounded-lg bg-mexiPink text-white font-semibold shadow">All Drinks</button>
-          <button onclick="filterDrinks('coffee')" class="drink-filter-btn px-4 py-2 rounded-lg bg-neutral-800 text-gray-300 font-semibold hover:text-white">Coffees</button>
-          <button onclick="filterDrinks('matcha')" class="drink-filter-btn px-4 py-2 rounded-lg bg-neutral-800 text-gray-300 font-semibold hover:text-white">Matcha & Tea</button>
-          <button onclick="filterDrinks('lemonade')" class="drink-filter-btn px-4 py-2 rounded-lg bg-neutral-800 text-gray-300 font-semibold hover:text-white">Lemonades</button>
-          <button onclick="filterDrinks('smoothie')" class="drink-filter-btn px-4 py-2 rounded-lg bg-neutral-800 text-gray-300 font-semibold hover:text-white">Smoothies</button>
-        </div>
-      </div>
-
-      <!-- Coffee Add-on Highlight Box -->
-      <div class="mb-8 p-4 rounded-2xl bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 border border-mexiYellow/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center space-x-4">
-          <div class="w-12 h-12 rounded-full bg-mexiYellow/20 flex items-center justify-center text-mexiYellow text-2xl font-bold">
-            🧋
-          </div>
-          <div>
-            <h4 class="font-bold text-white text-base sm:text-lg">Want Boba with your Coffee?</h4>
-            <p class="text-xs sm:text-sm text-gray-300">Add chewy black sugar tapioca pearls to any cold brew or frappe!</p>
-          </div>
-        </div>
-        <span class="px-4 py-2 rounded-xl bg-mexiYellow text-black font-extrabold text-sm shadow">
-          +$1.00 Add-On
+    <!-- HERO / ANNOUNCEMENT -->
+    <div class="mb-8 rounded-2xl bg-gradient-to-r from-pink-900/40 via-purple-900/30 to-gray-900 border border-pink-500/30 p-6 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-pink-500/20 text-pink-400 border border-pink-500/30 mb-2">
+          ✨ POP-UP TEST MENU IS LIVE!
         </span>
+        <h2 class="text-3xl font-heading font-bold text-white mb-2">Taste our flavors before we go full blown!</h2>
+        <p class="text-gray-300 text-sm max-w-xl">
+          We are launching our home testing phase in Wills Point, TX. Try our custom crafted lattes, refreshing dragonfruit lemonade, boba creations, and homemade treats.
+        </p>
+      </div>
+      <div class="flex gap-3">
+        <a href="https://www.facebook.com/61595391840825" target="_blank" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm flex items-center gap-2 transition">
+          <i class="fa-brands fa-facebook"></i> Facebook
+        </a>
+        <a href="https://www.instagram.com/mexibloomtexas" target="_blank" class="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white font-semibold text-sm flex items-center gap-2 transition">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+
+    <!-- 1. DRINKS TAB -->
+    <section id="tab-drinks" class="space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-800 pb-4">
+        <div>
+          <h3 class="font-heading text-2xl font-bold text-white">Beverage Selection</h3>
+          <p class="text-xs text-gray-400">Add Boba (Tapioca Pearls) to any coffee drink for just +$1.00!</p>
+        </div>
+        
+        <!-- Category Filter Subtabs -->
+        <div class="flex flex-wrap gap-1.5 bg-gray-900 p-1 rounded-xl border border-gray-800">
+          <button onclick="filterDrinks('all')" id="filter-all" class="px-3 py-1 rounded-lg text-xs font-semibold subtab-active">All Drinks</button>
+          <button onclick="filterDrinks('matcha')" id="filter-matcha" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Matcha</button>
+          <button onclick="filterDrinks('coffee')" id="filter-coffee" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Coffee</button>
+          <button onclick="filterDrinks('lemonade')" id="filter-lemonade" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Lemonades</button>
+          <button onclick="filterDrinks('smoothie')" id="filter-smoothie" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Smoothies</button>
+        </div>
       </div>
 
       <!-- Drinks Grid -->
-      <div id="drinks-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="drinks-grid">
         
-        <!-- Drink 1: Cold Brew -->
-        <div class="drink-card coffee bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiPink transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-amber-900/40 text-amber-300 text-xs font-bold uppercase tracking-wider">Coffee</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$5.50</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Classic Iced Coffee / Cold Brew</h3>
-            <p class="text-xs text-gray-400 mb-4">Smooth, low-acidity 16hr cold brew poured over ice with choice of milk & optional vanilla syrup.</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiGreen font-semibold">
-            <span><i class="fa-solid fa-cubes-stacked"></i> Served Iced</span>
-            <span>Optional Boba +$1.00</span>
-          </div>
-        </div>
-
-        <!-- Drink 2: Chocolate Chip Frappe -->
-        <div class="drink-card coffee bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiPink transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-amber-900/40 text-amber-300 text-xs font-bold uppercase tracking-wider">Blended Coffee</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$6.00</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Chocolate Chip Frappe</h3>
-            <p class="text-xs text-gray-400 mb-4">Rich espresso blended with milk, dark chocolate syrup, mini chocolate chips, topped with whipped cream.</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiGreen font-semibold">
-            <span><i class="fa-solid fa-snowflake"></i> Blended Ice</span>
-            <span>Optional Boba +$1.00</span>
-          </div>
-        </div>
-
-        <!-- Drink 3: Caramel Frappe -->
-        <div class="drink-card coffee bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiPink transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-amber-900/40 text-amber-300 text-xs font-bold uppercase tracking-wider">Blended Coffee</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$6.00</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Caramel Cream Frappe</h3>
-            <p class="text-xs text-gray-400 mb-4">Decadent caramel sauce blended with rich espresso and ice, drizzled with sweet golden caramel.</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiGreen font-semibold">
-            <span><i class="fa-solid fa-snowflake"></i> Blended Ice</span>
-            <span>Optional Boba +$1.00</span>
-          </div>
-        </div>
-
-        <!-- Drink 4: Strawberry Matcha Latte -->
-        <div class="drink-card matcha bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiGreen transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-950/60 text-mexiGreen text-xs font-bold uppercase tracking-wider">Signature Matcha</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$6.50</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Strawberry Matcha Latte</h3>
-            <p class="text-xs text-gray-400 mb-4">Whisked organic Japanese matcha layered over sweet strawberry puree and cold milk. Beautiful pink & green layer!</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiPink font-semibold">
-            <span><i class="fa-solid fa-seedling"></i> Organic Matcha</span>
-            <span>16 oz Cup</span>
-          </div>
-        </div>
-
-        <!-- Drink 5: Classic Brown Sugar Bubble Tea -->
-        <div class="drink-card matcha bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiGreen transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-950/60 text-mexiGreen text-xs font-bold uppercase tracking-wider">Bubble Milk Tea</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$6.50</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Classic Brown Sugar Boba Tea</h3>
-            <p class="text-xs text-gray-400 mb-4">Fresh cooked black tapioca pearls simmered in warm brown sugar syrup, topped with rich black tea and cream.</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiYellow font-semibold">
-            <span><i class="fa-solid fa-circle"></i> Boba Included</span>
-            <span>Fan Favorite</span>
-          </div>
-        </div>
-
-        <!-- Drink 6: Dragonfruit Lemonade -->
-        <div class="drink-card lemonade bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiPink transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-pink-950/60 text-mexiPink text-xs font-bold uppercase tracking-wider">Refresher</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$5.00</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Dragonfruit Refresher Lemonade</h3>
-            <p class="text-xs text-gray-400 mb-4">Vibrant, hot-pink dragonfruit concentrate shaken with tangy fresh lemon juice and poured over ice.</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiPink font-semibold">
-            <span><i class="fa-solid fa-lemon"></i> Fresh Citrus</span>
-            <span>Bright & Tropical</span>
-          </div>
-        </div>
-
-        <!-- Drink 7: Classic Fresh Lemonade -->
-        <div class="drink-card lemonade bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiPink transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-yellow-950/60 text-mexiYellow text-xs font-bold uppercase tracking-wider">Citrus</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$5.00</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Classic Fresh-Squeezed Lemonade</h3>
-            <p class="text-xs text-gray-400 mb-4">Made daily with real hand-squeezed lemons and simple syrup. Crisp, clean, and perfectly balanced sweetness.</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiYellow font-semibold">
-            <span><i class="fa-solid fa-glass-water"></i> 100% Real Juice</span>
-            <span>16 oz Cup</span>
-          </div>
-        </div>
-
-        <!-- Drink 8: Agua Mineral Preparada -->
-        <div class="drink-card lemonade bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiPink transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-pink-950/60 text-mexiPink text-xs font-bold uppercase tracking-wider">Mexican Mineral Water</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$4.50</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Agua Mineral Preparada</h3>
-            <p class="text-xs text-gray-400 mb-4">Chilled Mexican sparkling water with fresh squeezed lime, tajín rim, and optional tamarind candy straw!</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-mexiGreen font-semibold">
-            <span><i class="fa-solid fa-pepper-hot"></i> Tajín & Lime</span>
-            <span>Non-Alcoholic</span>
-          </div>
-        </div>
-
-        <!-- Drink 9: Banana Chocolate Smoothie -->
-        <div class="drink-card smoothie bg-mexiCard rounded-2xl p-5 border border-neutral-800 hover:border-mexiYellow transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-300 text-xs font-bold uppercase tracking-wider">Smoothie</span>
-              <span class="text-xl font-extrabold text-mexiYellow">$7.00</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mb-2">Banana, Almond & Chocolate Smoothie</h3>
-            <p class="text-xs text-gray-400 mb-4">Whole frozen banana blended with creamy almond butter, rich dark cocoa, and creamy milk. Satisfying & thick!</p>
-          </div>
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-purple-300 font-semibold">
-            <span><i class="fa-solid fa-bolt"></i> Energy Booster</span>
-            <span>Real Fruit & Nuts</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 2: SNACKS / CRAVINGS -->
-    <section id="sec-snacks" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 bg-neutral-900/50 rounded-3xl my-6 border border-neutral-800">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="text-mexiYellow font-bold tracking-widest text-xs uppercase">Antojitos & Pastries</span>
-        <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white mt-1">Random Cravings</h2>
-        <p class="text-sm text-gray-400 mt-2">Whether you’re in the mood for something sweet with your latte or an authentic savory Mexican street snack!</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Subsection A: Sweet Side Cravings -->
-        <div class="bg-mexiCard p-6 rounded-2xl border border-mexiPink/40 shadow-xl relative overflow-hidden">
-          <div class="absolute -right-6 -top-6 text-7xl text-mexiPink/10 font-bold pointer-events-none">🍰</div>
-          <div class="flex items-center space-x-3 mb-6">
-            <span class="w-10 h-10 rounded-xl bg-mexiPink/20 text-mexiPink flex items-center justify-center font-bold text-xl">
-              <i class="fa-solid fa-cake-candles"></i>
-            </span>
+        <!-- Strawberry Matcha -->
+        <div class="drink-card matcha bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
             <div>
-              <h3 class="text-2xl font-display font-bold text-white">Sweet Side Cravings</h3>
-              <p class="text-xs text-mexiPink font-medium">Fresh baked treats & slices</p>
+              <span class="text-xs font-bold text-green-400 bg-green-950/60 border border-green-800 px-2.5 py-0.5 rounded-full">Matcha</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Strawberry Matcha Latte</h4>
             </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$6.50</span>
           </div>
-
-          <div class="space-y-4">
-            <!-- Item 1 -->
-            <div class="flex justify-between items-center p-3 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 transition">
-              <div>
-                <h4 class="font-bold text-white text-base">Classic Cheesecake Bites</h4>
-                <p class="text-xs text-gray-400">Rich, creamy bites served standalone or layered over drinks!</p>
-              </div>
-              <span class="text-mexiYellow font-extrabold text-base ml-2">$5.00</span>
-            </div>
-            <!-- Item 2 -->
-            <div class="flex justify-between items-center p-3 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 transition">
-              <div>
-                <h4 class="font-bold text-white text-base">Homemade Pumpkin Pie Slice</h4>
-                <p class="text-xs text-gray-400">Warm spice pumpkin pie baked fresh with whip topping.</p>
-              </div>
-              <span class="text-mexiYellow font-extrabold text-base ml-2">$4.00</span>
-            </div>
-            <!-- Item 3 -->
-            <div class="flex justify-between items-center p-3 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 transition">
-              <div>
-                <h4 class="font-bold text-white text-base">Banana Bread Slice</h4>
-                <p class="text-xs text-gray-400">Moist, buttery banana bread sliced thick with walnut crunch.</p>
-              </div>
-              <span class="text-mexiYellow font-extrabold text-base ml-2">$3.50</span>
-            </div>
-            <!-- Item 4 -->
-            <div class="flex justify-between items-center p-3 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 transition">
-              <div>
-                <h4 class="font-bold text-white text-base">Golden Honey Cornbread</h4>
-                <p class="text-xs text-gray-400">Sweet skillet-style corn bread with real honey drizzle.</p>
-              </div>
-              <span class="text-mexiYellow font-extrabold text-base ml-2">$3.00</span>
-            </div>
+          <p class="text-gray-400 text-sm mb-4">Culinary-grade Japanese matcha whisked smooth and layered over strawberry puree and fresh milk.</p>
+          <div class="text-xs text-pink-400 font-semibold bg-pink-950/30 p-2 rounded-lg border border-pink-900/50">
+            🍓 Vibrant layered green & pink presentation!
           </div>
         </div>
 
-        <!-- Subsection B: Mexican Side Cravings -->
-        <div class="bg-mexiCard p-6 rounded-2xl border border-mexiGreen/40 shadow-xl relative overflow-hidden">
-          <div class="absolute -right-6 -top-6 text-7xl text-mexiGreen/10 font-bold pointer-events-none">🌽</div>
-          <div class="flex items-center space-x-3 mb-6">
-            <span class="w-10 h-10 rounded-xl bg-mexiGreen/20 text-mexiGreen flex items-center justify-center font-bold text-xl">
-              <i class="fa-solid fa-pepper-hot"></i>
-            </span>
+        <!-- Classic & Flavored Matcha -->
+        <div class="drink-card matcha bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
             <div>
-              <h3 class="text-2xl font-display font-bold text-white">Mexican Antojitos</h3>
-              <p class="text-xs text-mexiGreen font-medium">Authentic street food favorites</p>
+              <span class="text-xs font-bold text-green-400 bg-green-950/60 border border-green-800 px-2.5 py-0.5 rounded-full">Matcha</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Classic / Vanilla Matcha</h4>
             </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$5.50 - $6.00</span>
           </div>
+          <p class="text-gray-400 text-sm mb-4">Smooth, ceremonial-inspired matcha tea balanced with pure cane sugar or Madagascar vanilla syrup.</p>
+        </div>
 
-          <div class="space-y-4">
-            <!-- Item 1 -->
-            <div class="flex justify-between items-center p-3 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 transition">
-              <div>
-                <h4 class="font-bold text-white text-base">Elote en Vaso (Esquites)</h4>
-                <p class="text-xs text-gray-400">Warm cut corn, mayonnaise, cotija cheese, butter & chili powder in an 8oz cup.</p>
-              </div>
-              <span class="text-mexiYellow font-extrabold text-base ml-2">$5.00</span>
+        <!-- Chocolate Chip Frappe -->
+        <div class="drink-card coffee bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <span class="text-xs font-bold text-amber-400 bg-amber-950/60 border border-amber-800 px-2.5 py-0.5 rounded-full">Blended Coffee</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Chocolate Chip Frappe</h4>
             </div>
-            <!-- Item 2 -->
-            <div class="flex justify-between items-center p-3 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 transition">
-              <div>
-                <h4 class="font-bold text-white text-base">Mangonada Escarchada</h4>
-                <p class="text-xs text-gray-400">Sweet mango slushy layered with chamoy, lime, Tajín, and tamarind candy straw.</p>
-              </div>
-              <span class="text-mexiYellow font-extrabold text-base ml-2">$6.00</span>
-            </div>
-            <!-- Item 3 -->
-            <div class="flex justify-between items-center p-3 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 transition">
-              <div>
-                <h4 class="font-bold text-white text-base">Fruta Picada con Limón y Tajín</h4>
-                <p class="text-xs text-gray-400">Fresh cut watermelon, cucumber, and fruit dusted with chili lime seasoning.</p>
-              </div>
-              <span class="text-mexiYellow font-extrabold text-base ml-2">$4.50</span>
-            </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$6.00</span>
           </div>
+          <p class="text-gray-400 text-sm mb-4">Rich espresso blended with ice, milk, chocolate syrup, and mini chocolate chips. Topped with whipped cream.</p>
+          <div class="text-xs text-amber-300 font-semibold bg-amber-950/30 p-2 rounded-lg border border-amber-900/50">
+            🧋 Optional: Add chewy boba pearls (+ $1.00)
+          </div>
+        </div>
+
+        <!-- Caramel Frappe -->
+        <div class="drink-card coffee bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <span class="text-xs font-bold text-amber-400 bg-amber-950/60 border border-amber-800 px-2.5 py-0.5 rounded-full">Blended Coffee</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Caramel Swirl Frappe</h4>
+            </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$6.00</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Decadent icy coffee blended with buttery caramel drizzle and cream.</p>
+          <div class="text-xs text-amber-300 font-semibold bg-amber-950/30 p-2 rounded-lg border border-amber-900/50">
+            🧋 Optional: Add chewy boba pearls (+ $1.00)
+          </div>
+        </div>
+
+        <!-- Cold Brew / Iced Coffee -->
+        <div class="drink-card coffee bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <span class="text-xs font-bold text-amber-400 bg-amber-950/60 border border-amber-800 px-2.5 py-0.5 rounded-full">Iced Coffee</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Classic Iced Cold Brew</h4>
+            </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$5.50</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Steeped low and slow for maximum smoothness. Served over ice with your choice of splash milk or vanilla syrup.</p>
+          <div class="text-xs text-amber-300 font-semibold bg-amber-950/30 p-2 rounded-lg border border-amber-900/50">
+            🧋 Optional: Add chewy boba pearls (+ $1.00)
+          </div>
+        </div>
+
+        <!-- Dragonfruit Lemonade -->
+        <div class="drink-card lemonade bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <span class="text-xs font-bold text-pink-400 bg-pink-950/60 border border-pink-800 px-2.5 py-0.5 rounded-full">Refreshers</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Dragonfruit Lemonade</h4>
+            </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$5.00</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Karina's personal favorite! Fresh squeezed citrus lemonade shaken with bright pitaya dragonfruit concentrate.</p>
+        </div>
+
+        <!-- Classic Fresh Lemonade -->
+        <div class="drink-card lemonade bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <span class="text-xs font-bold text-yellow-400 bg-yellow-950/60 border border-yellow-800 px-2.5 py-0.5 rounded-full">Classic Citrus</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Classic Fresh Lemonade</h4>
+            </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$5.00</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Tart, sweet, and made from real squeezed lemons. Served ice cold with fresh lemon slice garnish.</p>
+        </div>
+
+        <!-- Banana Almond Chocolate Smoothie -->
+        <div class="drink-card smoothie bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <span class="text-xs font-bold text-purple-400 bg-purple-950/60 border border-purple-800 px-2.5 py-0.5 rounded-full">Smoothies</span>
+              <h4 class="font-heading text-xl font-bold text-white mt-2">Banana Almond Chocolate</h4>
+            </div>
+            <span class="font-heading text-xl font-bold neon-yellow">$7.00</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Ripe frozen banana blended with creamy almond butter, rich cocoa powder, and chilled almond milk. Thick and filling!</p>
         </div>
 
       </div>
     </section>
 
-    <!-- SECTION 3: THURSDAY SPECIALS -->
-    <section id="sec-specials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div class="relative bg-gradient-to-r from-red-950 via-neutral-900 to-red-950 rounded-3xl p-6 sm:p-10 border-2 border-mexiPink shadow-2xl overflow-hidden">
-        
-        <div class="absolute top-0 right-0 bg-mexiYellow text-black text-xs font-black px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">
-          🔥 Exclusive Weekly Feature
-        </div>
+    <!-- 2. CRAVINGS TAB -->
+    <section id="tab-cravings" class="space-y-8 hidden">
+      <div class="border-b border-gray-800 pb-4">
+        <h3 class="font-heading text-2xl font-bold text-white">Random Cravings & Snacks</h3>
+        <p class="text-xs text-gray-400">Sweet treats and traditional Mexican street snacks made fresh daily.</p>
+      </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div class="space-y-4">
-            <span class="inline-block px-3 py-1 rounded-md bg-mexiPink/20 text-mexiPink font-bold text-xs uppercase tracking-widest">
-              Especiales de los Jueves
+      <!-- Section 1: Usual Sweet Side -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <i class="fa-solid fa-cake-candles text-pink-500 text-xl"></i>
+          <h4 class="font-heading text-xl font-bold text-pink-400">The Sweet Side</h4>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <h5 class="font-bold text-white mb-1">Cheesecake Bites</h5>
+            <p class="text-xs text-gray-400 mb-2">Rich cheesecake cubes served with strawberry drizzle.</p>
+            <span class="text-sm font-bold neon-yellow">$5.00</span>
+          </div>
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <h5 class="font-bold text-white mb-1">Pumpkin Pie Slice</h5>
+            <p class="text-xs text-gray-400 mb-2">Homemade spiced pumpkin pie with whip topping.</p>
+            <span class="text-sm font-bold neon-yellow">$4.00</span>
+          </div>
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <h5 class="font-bold text-white mb-1">Banana Bread Slice</h5>
+            <p class="text-xs text-gray-400 mb-2">Moist, buttery slice made with ripe sweet bananas.</p>
+            <span class="text-sm font-bold neon-yellow">$3.50</span>
+          </div>
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <h5 class="font-bold text-white mb-1">Golden Cornbread</h5>
+            <p class="text-xs text-gray-400 mb-2">Sweet honey-infused southern style cornbread piece.</p>
+            <span class="text-sm font-bold neon-yellow">$3.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Mexican Side of Cravings -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <i class="fa-solid fa-pepper-hot text-green-400 text-xl"></i>
+          <h4 class="font-heading text-xl font-bold text-green-400">Mexican Antojitos & Cravings</h4>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <h5 class="font-bold text-white mb-1">Elote en Vaso (Esquites)</h5>
+            <p class="text-xs text-gray-400 mb-2">Warm tender corn in a cup layered with mayo, cotija cheese, butter, lime, and chili powder.</p>
+            <span class="text-sm font-bold neon-yellow">$5.00</span>
+          </div>
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <h5 class="font-bold text-white mb-1">Mangonada</h5>
+            <p class="text-xs text-gray-400 mb-2">Chilled mango slushie swirled with chamoy, Tajín seasoning, and a tamarind candy straw.</p>
+            <span class="text-sm font-bold neon-yellow">$6.00</span>
+          </div>
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <h5 class="font-bold text-white mb-1">Fruit Cup with Chili & Lime</h5>
+            <p class="text-xs text-gray-400 mb-2">Fresh cut watermelon, pineapple, and cucumber drizzled with lime juice and Tajín.</p>
+            <span class="text-sm font-bold neon-yellow">$5.00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SPECIALS TAB -->
+    <section id="tab-specials" class="space-y-6 hidden">
+      <div class="rounded-3xl bg-gradient-to-b from-yellow-950/40 via-gray-900 to-gray-900 border-2 border-yellow-500/50 p-6 md:p-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-3 text-center md:text-left">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-yellow-500 text-black">
+              🔥 EVERY THURSDAY SPECIAL
             </span>
-            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white leading-tight">
-              Thursday Smoked Brisket <br/>
-              <span class="text-mexiYellow text-glow-yellow">By Zach & Jaime</span>
-            </h2>
-            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Every Thursday, pitmasters **Zach & Jaime** take over the smoker to prepare authentic, slow-smoked Texas brisket with a signature house rub. tender, juicy, and rich in smoke flavor!
+            <h3 class="font-heading text-3xl md:text-4xl font-bold text-white">Zach & Jaime's Smoked Brisket</h3>
+            <p class="text-gray-300 text-sm max-w-lg">
+              Slow-smoked to perfection over hardwood by Zach and Jaime! Tender, juicy, spiced-rubbed brisket served warm every Thursday.
             </p>
-            <div class="flex flex-wrap items-center gap-3 pt-2">
-              <span class="px-4 py-2 rounded-xl bg-neutral-800 border border-mexiGreen text-mexiGreen text-xs font-bold">
-                <i class="fa-solid fa-clock"></i> Served Every Thursday
-              </span>
-              <span class="px-4 py-2 rounded-xl bg-neutral-800 border border-mexiYellow text-mexiYellow text-xs font-bold">
-                <i class="fa-solid fa-fire-burner"></i> Pit-Smoked Low & Slow
-              </span>
-            </div>
-            <div class="pt-2">
-              <span class="inline-block bg-mexiPink text-white font-extrabold text-xs uppercase px-3 py-1.5 rounded-lg shadow-md tracking-wider">
-                Coming Soon • ¡Próximamente!
-              </span>
+            <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-4 text-xs font-semibold text-yellow-400">
+              <span><i class="fa-solid fa-clock mr-1"></i> Available Thursdays Only</span>
+              <span><i class="fa-solid fa-location-dot mr-1"></i> Wills Point, TX</span>
             </div>
           </div>
-
-          <!-- Card / Preview Image Box -->
-          <div class="bg-black/60 p-6 rounded-2xl border border-neutral-700 text-center space-y-4">
-            <div class="w-20 h-20 mx-auto rounded-full bg-neutral-800 border-2 border-mexiYellow flex items-center justify-center text-3xl">
-              🥩
-            </div>
-            <h3 class="font-display font-bold text-xl text-white">Zach & Jaime at the Smoker</h3>
-            <p class="text-xs text-gray-400">
-              Catch our pitmasters serving hot brisket slices and brisket tacos every Thursday during our pop-up operations in Wills Point!
-            </p>
-            <div class="p-3 rounded-xl bg-neutral-900 text-mexiYellow font-semibold text-xs border border-neutral-800">
-              📍 Location: Wills Point, TX • Follow our social channels for pickup hours!
-            </div>
+          
+          <div class="w-full md:w-72 bg-black/60 rounded-2xl p-4 border border-yellow-500/30 text-center">
+            <i class="fa-solid fa-fire text-4xl text-yellow-500 mb-2"></i>
+            <h4 class="font-heading font-bold text-lg text-white mb-1">Pre-Order Recommended</h4>
+            <p class="text-xs text-gray-400 mb-4">Limited quantities smoked per week. Message us on social media to reserve your plate!</p>
+            <a href="https://www.facebook.com/61595391840825" target="_blank" class="block w-full py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl text-sm transition">
+              Reserve On Facebook
+            </a>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- SECTION 4: ABOUT US -->
-    <section id="sec-about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-mexiGreen font-bold tracking-widest text-xs uppercase">Family Owned & Operated</span>
-        <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white mt-1">Meet the MexiBloom Family</h2>
-        <p class="text-sm text-gray-400 mt-2">
-          Sabor en Familia! Four family members united to bring vibrant drinks, handcrafted treats, and smoked perfection to our local community.
+    <!-- 4. ABOUT US TAB -->
+    <section id="tab-about" class="space-y-8 hidden">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <h3 class="font-heading text-3xl font-bold text-white">Family Owned & Operated</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Sabor en Familia! MexiBloom was born out of a shared family passion for colorful drinks, authentic Mexican street cravings, and delicious slow-smoked barbecue. Meet our family crew behind every recipe!
         </p>
       </div>
 
-      <!-- Team Grid -->
+      <!-- Team Members Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <!-- Member 1: Karina -->
-        <div class="bg-mexiCard rounded-2xl p-6 border border-neutral-800 hover:border-mexiPink transition text-center flex flex-col items-center">
-          <div class="w-28 h-28 rounded-full border-4 border-mexiPink bg-neutral-800 mb-4 overflow-hidden shadow-lg flex items-center justify-center text-4xl">
-            👩🏻‍🍳
+        <!-- Karina -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-pink-500 transition">
+          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-500 mb-3">
+            <img src="https://i.ibb.co/3mykPTr9/karina.jpg" alt="Karina" class="w-full h-full object-cover">
           </div>
-          <h3 class="font-display font-bold text-xl text-white">Karina</h3>
-          <span class="text-xs font-bold text-mexiPink mb-3 uppercase tracking-wider">Founder / Project & Menu Lead</span>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Leading recipe development, drink creation, and customer experience. Passionate about blending modern beverage trends with Mexican warmth.
-          </p>
+          <h4 class="font-heading text-xl font-bold text-white">Karina</h4>
+          <span class="text-xs text-pink-400 font-semibold">Co-Founder & Drink Creator</span>
+          <p class="text-xs text-gray-400 mt-2">Passionate about experimenting with recipes, dragonfruit flavors, and crafting custom apparel.</p>
         </div>
 
-        <!-- Member 2: Zach -->
-        <div class="bg-mexiCard rounded-2xl p-6 border border-neutral-800 hover:border-mexiYellow transition text-center flex flex-col items-center">
-          <div class="w-28 h-28 rounded-full border-4 border-mexiYellow bg-neutral-800 mb-4 overflow-hidden shadow-lg flex items-center justify-center text-4xl">
-            🧢
+        <!-- Yvette -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-pink-500 transition">
+          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-500 mb-3">
+            <img src="https://i.ibb.co/6R22N0w4/yvette.jpg" alt="Yvette" class="w-full h-full object-cover">
           </div>
-          <h3 class="font-display font-bold text-xl text-white">Zach</h3>
-          <span class="text-xs font-bold text-mexiYellow mb-3 uppercase tracking-wider">Brisket Master & Operations</span>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Co-leading our Thursday Smoked Brisket specials with Jaime and keeping our food prep workflow precise and delicious.
-          </p>
+          <h4 class="font-heading text-xl font-bold text-white">Yvette</h4>
+          <span class="text-xs text-pink-400 font-semibold">Co-Founder & Chief Baker</span>
+          <p class="text-xs text-gray-400 mt-2">Mastermind behind our sweet bakery items including pumpkin pies, cheesecake, and fruit treats.</p>
         </div>
 
-        <!-- Member 3: Mona -->
-        <div class="bg-mexiCard rounded-2xl p-6 border border-neutral-800 hover:border-mexiGreen transition text-center flex flex-col items-center">
-          <div class="w-28 h-28 rounded-full border-4 border-mexiGreen bg-neutral-800 mb-4 overflow-hidden shadow-lg flex items-center justify-center text-4xl">
-            🌸
+        <!-- Zach -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-green-500 transition">
+          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-green-500 mb-3">
+            <img src="https://i.ibb.co/Xfx74sKq/zach.jpg" alt="Zach" class="w-full h-full object-cover">
           </div>
-          <h3 class="font-display font-bold text-xl text-white">Mona</h3>
-          <span class="text-xs font-bold text-mexiGreen mb-3 uppercase tracking-wider">Kitchen & Flavor Specialist</span>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Bringing traditional sweet and savory family recipes to life, ensuring every pie slice and esquite bowl tastes like home.
-          </p>
+          <h4 class="font-heading text-xl font-bold text-white">Zach</h4>
+          <span class="text-xs text-green-400 font-semibold">Pitmaster & Logistics</span>
+          <p class="text-xs text-gray-400 mt-2">Co-creator of the famous Thursday Smoked Brisket and managing event setups.</p>
         </div>
 
-        <!-- Member 4: Jaime -->
-        <div class="bg-mexiCard rounded-2xl p-6 border border-neutral-800 hover:border-mexiPink transition text-center flex flex-col items-center">
-          <div class="w-28 h-28 rounded-full border-4 border-mexiPink bg-neutral-800 mb-4 overflow-hidden shadow-lg flex items-center justify-center text-4xl">
-            🪵
+        <!-- Jaime -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-green-500 transition">
+          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-green-500 mb-3">
+            <img src="https://i.ibb.co/v4bSbb2y/jaime.jpg" alt="Jaime" class="w-full h-full object-cover">
           </div>
-          <h3 class="font-display font-bold text-xl text-white">Jaime</h3>
-          <span class="text-xs font-bold text-mexiPink mb-3 uppercase tracking-wider">Pitmaster & BBQ Specialist</span>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Master of heat and smoke. Partnering with Zach on the pit every Thursday to deliver mouthwatering brisket cuts.
-          </p>
+          <h4 class="font-heading text-xl font-bold text-white">Jaime</h4>
+          <span class="text-xs text-green-400 font-semibold">Pitmaster & Flavor Specialist</span>
+          <p class="text-xs text-gray-400 mt-2">Works alongside Zach on the smoker to prepare authentic slow-cooked barbecue meats.</p>
         </div>
 
       </div>
@@ -560,90 +385,59 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-black border-t border-neutral-800 py-8 text-center text-xs text-gray-500">
-    <div class="max-w-7xl mx-auto px-4 space-y-3">
-      <p class="font-display font-bold text-lg text-mexiPink">MexiBloom</p>
-      <p class="text-gray-400">Sabor en Familia • Wills Point, Texas</p>
-      <div class="flex justify-center space-x-4 text-gray-400 text-sm pt-2">
-        <a href="#" class="hover:text-mexiPink transition"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="hover:text-mexiPink transition"><i class="fa-brands fa-facebook"></i></a>
+  <footer class="bg-gray-950 border-t border-gray-800 py-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      <div class="text-center sm:text-left">
+        <p class="font-heading text-sm text-gray-300 font-bold">MexiBloom • Wills Point, TX</p>
+        <p>Made with love • Hecho con amor</p>
       </div>
-      <p class="pt-4 text-neutral-600">© 2026 MexiBloom. All rights reserved.</p>
+      <div class="flex gap-4 text-lg">
+        <a href="https://www.facebook.com/61595391840825" target="_blank" class="hover:text-blue-500 transition"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/mexibloomtexas" target="_blank" class="hover:text-pink-500 transition"><i class="fa-brands fa-instagram"></i></a>
+      </div>
     </div>
   </footer>
 
-  <!-- Simple JavaScript for Interactive Filtering & Tab Navigation -->
+  <!-- JavaScript Navigation Logic -->
   <script>
-    // Tab Display Logic
-    function showSection(sectionId) {
-      const drinksSec = document.getElementById('sec-drinks');
-      const snacksSec = document.getElementById('sec-snacks');
-      const specialsSec = document.getElementById('sec-specials');
-      const aboutSec = document.getElementById('sec-about');
-      const heroBanner = document.getElementById('hero-banner');
+    function switchTab(tabName) {
+      // Hide all tabs
+      document.getElementById('tab-drinks').classList.add('hidden');
+      document.getElementById('tab-cravings').classList.add('hidden');
+      document.getElementById('tab-specials').classList.add('hidden');
+      document.getElementById('tab-about').classList.add('hidden');
 
-      // Hide all first
-      drinksSec.style.display = 'none';
-      snacksSec.style.display = 'none';
-      specialsSec.style.display = 'none';
-      aboutSec.style.display = 'none';
+      // Reset main nav styles
+      document.getElementById('nav-drinks').classList.remove('tab-active');
+      document.getElementById('nav-cravings').classList.remove('tab-active');
+      document.getElementById('nav-specials').classList.remove('tab-active');
+      document.getElementById('nav-about').classList.remove('tab-active');
 
-      // Reset button styles
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('bg-mexiPink', 'text-white');
-        btn.classList.add('text-gray-300');
-      });
-
-      if (sectionId === 'home') {
-        heroBanner.style.display = 'block';
-        drinksSec.style.display = 'block';
-        snacksSec.style.display = 'block';
-        specialsSec.style.display = 'block';
-        aboutSec.style.display = 'block';
-      } else {
-        heroBanner.style.display = 'block'; // Keep hero visible on all tabs
-        const target = document.getElementById('sec-' + sectionId);
-        if (target) {
-          target.style.display = 'block';
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-        const activeNav = document.getElementById('nav-' + sectionId);
-        if (activeNav) {
-          activeNav.classList.add('bg-mexiPink', 'text-white');
-          activeNav.classList.remove('text-gray-300');
-        }
-      }
+      // Show targeted tab & highlight button
+      document.getElementById('tab-' + tabName).classList.remove('hidden');
+      document.getElementById('nav-' + tabName).classList.add('tab-active');
     }
 
-    // Drink Category Filtering
     function filterDrinks(category) {
       const cards = document.querySelectorAll('.drink-card');
-      const buttons = document.querySelectorAll('.drink-filter-btn');
+      const buttons = ['all', 'matcha', 'coffee', 'lemonade', 'smoothie'];
 
-      // Reset filter button styles
+      // Reset category filter buttons
       buttons.forEach(btn => {
-        btn.classList.remove('bg-mexiPink', 'text-white');
-        btn.classList.add('bg-neutral-800', 'text-gray-300');
+        const el = document.getElementById('filter-' + btn);
+        if (el) el.classList.remove('subtab-active');
       });
+      document.getElementById('filter-' + category).classList.add('subtab-active');
 
-      // Highlight active filter button
-      event.currentTarget.classList.remove('bg-neutral-800', 'text-gray-300');
-      event.currentTarget.classList.add('bg-mexiPink', 'text-white');
-
-      // Show/Hide cards
+      // Show/hide cards
       cards.forEach(card => {
         if (category === 'all' || card.classList.contains(category)) {
-          card.style.display = 'flex';
+          card.classList.remove('hidden');
         } else {
-          card.style.display = 'none';
+          card.classList.add('hidden');
         }
       });
     }
-
-    // Initial setup on window load
-    window.onload = function() {
-      showSection('home');
-    };
   </script>
 </body>
 </html>
