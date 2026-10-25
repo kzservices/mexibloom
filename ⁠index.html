@@ -1,443 +1,1222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MexiBloom - Drinks, Sweets & Cravings</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Outfit', sans-serif;
-      background-color: #0b0f19;
-      color: #f3f4f6;
-    }
-    .font-heading {
-      font-family: 'Fredoka', cursive;
-    }
-    .neon-pink { color: #ff1493; }
-    .bg-neon-pink { background-color: #ff1493; }
-    .border-neon-pink { border-color: #ff1493; }
-    
-    .neon-green { color: #39ff14; }
-    .bg-neon-green { background-color: #39ff14; }
-    .border-neon-green { border-color: #39ff14; }
-    
-    .neon-yellow { color: #fff01f; }
-    .bg-neon-yellow { background-color: #fff01f; }
-    
-    .glow-pink:hover {
-      box-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
-    }
-    .glow-green:hover {
-      box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
-    }
-    .tab-active {
-      background-color: #ff1493 !important;
-      color: #ffffff !important;
-      border-color: #ff1493 !important;
-    }
-    .subtab-active {
-      background-color: #39ff14 !important;
-      color: #000000 !important;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MexiBloom - Sip, Snack, & Bloom | Wills Point, TX</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Header / Navbar -->
-  <header class="bg-gray-900/90 backdrop-blur border-b border-pink-500/30 sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-full border-2 border-pink-500 bg-black flex items-center justify-center overflow-hidden font-heading text-xl text-pink-500 font-bold">
-          MB
-        </div>
-        <div>
-          <h1 class="font-heading text-2xl text-white tracking-wide">Mexi<span class="neon-pink">Bloom</span></h1>
-          <p class="text-xs text-gray-400">Made with love • Hecho con amor</p>
-        </div>
-      </div>
-
-      <!-- Main Navigation -->
-      <nav class="flex flex-wrap justify-center gap-2">
-        <button onclick="switchTab('drinks')" id="nav-drinks" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-700 bg-gray-800 text-gray-300 transition tab-active glow-pink">
-          <i class="fa-solid font-bold fa-glass-water mr-1.5"></i>Drinks Menu
-        </button>
-        <button onclick="switchTab('cravings')" id="nav-cravings" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-700 bg-gray-800 text-gray-300 transition glow-pink">
-          <i class="fa-solid fa-cookie-bite mr-1.5"></i>Cravings
-        </button>
-        <button onclick="switchTab('specials')" id="nav-specials" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-yellow-500/50 bg-gray-800 text-yellow-400 transition glow-green">
-          <i class="fa-solid fa-fire-flame-curry mr-1.5"></i>Thursday Specials
-        </button>
-        <button onclick="switchTab('about')" id="nav-about" class="px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-700 bg-gray-800 text-gray-300 transition glow-pink">
-          <i class="fa-solid fa-users mr-1.5"></i>About Us
-        </button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Main Content Area -->
-  <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
-
-    <!-- HERO / ANNOUNCEMENT -->
-    <div class="mb-8 rounded-2xl bg-gradient-to-r from-pink-900/40 via-purple-900/30 to-gray-900 border border-pink-500/30 p-6 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div>
-        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-pink-500/20 text-pink-400 border border-pink-500/30 mb-2">
-          ✨ POP-UP TEST MENU IS LIVE!
-        </span>
-        <h2 class="text-3xl font-heading font-bold text-white mb-2">Taste our flavors before we go full blown!</h2>
-        <p class="text-gray-300 text-sm max-w-xl">
-          We are launching our home testing phase in Wills Point, TX. Try our custom crafted lattes, refreshing dragonfruit lemonade, boba creations, and homemade treats.
-        </p>
-      </div>
-      <div class="flex gap-3">
-        <a href="https://www.facebook.com/61595391840825" target="_blank" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm flex items-center gap-2 transition">
-          <i class="fa-brands fa-facebook"></i> Facebook
-        </a>
-        <a href="https://www.instagram.com/mexibloomtexas" target="_blank" class="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white font-semibold text-sm flex items-center gap-2 transition">
-          <i class="fa-brands fa-instagram"></i> Instagram
-        </a>
-      </div>
-    </div>
-
-    <!-- 1. DRINKS TAB -->
-    <section id="tab-drinks" class="space-y-6">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-800 pb-4">
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-white">Beverage Selection</h3>
-          <p class="text-xs text-gray-400">Add Boba (Tapioca Pearls) to any coffee drink for just +$1.00!</p>
-        </div>
-        
-        <!-- Category Filter Subtabs -->
-        <div class="flex flex-wrap gap-1.5 bg-gray-900 p-1 rounded-xl border border-gray-800">
-          <button onclick="filterDrinks('all')" id="filter-all" class="px-3 py-1 rounded-lg text-xs font-semibold subtab-active">All Drinks</button>
-          <button onclick="filterDrinks('matcha')" id="filter-matcha" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Matcha</button>
-          <button onclick="filterDrinks('coffee')" id="filter-coffee" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Coffee</button>
-          <button onclick="filterDrinks('lemonade')" id="filter-lemonade" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Lemonades</button>
-          <button onclick="filterDrinks('smoothie')" id="filter-smoothie" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400">Smoothies</button>
-        </div>
-      </div>
-
-      <!-- Drinks Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="drinks-grid">
-        
-        <!-- Strawberry Matcha -->
-        <div class="drink-card matcha bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-green-400 bg-green-950/60 border border-green-800 px-2.5 py-0.5 rounded-full">Matcha</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Strawberry Matcha Latte</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$6.50</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Culinary-grade Japanese matcha whisked smooth and layered over strawberry puree and fresh milk.</p>
-          <div class="text-xs text-pink-400 font-semibold bg-pink-950/30 p-2 rounded-lg border border-pink-900/50">
-            🍓 Vibrant layered green & pink presentation!
-          </div>
-        </div>
-
-        <!-- Classic & Flavored Matcha -->
-        <div class="drink-card matcha bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-green-400 bg-green-950/60 border border-green-800 px-2.5 py-0.5 rounded-full">Matcha</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Classic / Vanilla Matcha</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$5.50 - $6.00</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Smooth, ceremonial-inspired matcha tea balanced with pure cane sugar or Madagascar vanilla syrup.</p>
-        </div>
-
-        <!-- Chocolate Chip Frappe -->
-        <div class="drink-card coffee bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-amber-400 bg-amber-950/60 border border-amber-800 px-2.5 py-0.5 rounded-full">Blended Coffee</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Chocolate Chip Frappe</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$6.00</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Rich espresso blended with ice, milk, chocolate syrup, and mini chocolate chips. Topped with whipped cream.</p>
-          <div class="text-xs text-amber-300 font-semibold bg-amber-950/30 p-2 rounded-lg border border-amber-900/50">
-            🧋 Optional: Add chewy boba pearls (+ $1.00)
-          </div>
-        </div>
-
-        <!-- Caramel Frappe -->
-        <div class="drink-card coffee bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-amber-400 bg-amber-950/60 border border-amber-800 px-2.5 py-0.5 rounded-full">Blended Coffee</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Caramel Swirl Frappe</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$6.00</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Decadent icy coffee blended with buttery caramel drizzle and cream.</p>
-          <div class="text-xs text-amber-300 font-semibold bg-amber-950/30 p-2 rounded-lg border border-amber-900/50">
-            🧋 Optional: Add chewy boba pearls (+ $1.00)
-          </div>
-        </div>
-
-        <!-- Cold Brew / Iced Coffee -->
-        <div class="drink-card coffee bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-amber-400 bg-amber-950/60 border border-amber-800 px-2.5 py-0.5 rounded-full">Iced Coffee</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Classic Iced Cold Brew</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$5.50</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Steeped low and slow for maximum smoothness. Served over ice with your choice of splash milk or vanilla syrup.</p>
-          <div class="text-xs text-amber-300 font-semibold bg-amber-950/30 p-2 rounded-lg border border-amber-900/50">
-            🧋 Optional: Add chewy boba pearls (+ $1.00)
-          </div>
-        </div>
-
-        <!-- Dragonfruit Lemonade -->
-        <div class="drink-card lemonade bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-pink-400 bg-pink-950/60 border border-pink-800 px-2.5 py-0.5 rounded-full">Refreshers</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Dragonfruit Lemonade</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$5.00</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Karina's personal favorite! Fresh squeezed citrus lemonade shaken with bright pitaya dragonfruit concentrate.</p>
-        </div>
-
-        <!-- Classic Fresh Lemonade -->
-        <div class="drink-card lemonade bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-yellow-400 bg-yellow-950/60 border border-yellow-800 px-2.5 py-0.5 rounded-full">Classic Citrus</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Classic Fresh Lemonade</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$5.00</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Tart, sweet, and made from real squeezed lemons. Served ice cold with fresh lemon slice garnish.</p>
-        </div>
-
-        <!-- Banana Almond Chocolate Smoothie -->
-        <div class="drink-card smoothie bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-pink-500/50 transition">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <span class="text-xs font-bold text-purple-400 bg-purple-950/60 border border-purple-800 px-2.5 py-0.5 rounded-full">Smoothies</span>
-              <h4 class="font-heading text-xl font-bold text-white mt-2">Banana Almond Chocolate</h4>
-            </div>
-            <span class="font-heading text-xl font-bold neon-yellow">$7.00</span>
-          </div>
-          <p class="text-gray-400 text-sm mb-4">Ripe frozen banana blended with creamy almond butter, rich cocoa powder, and chilled almond milk. Thick and filling!</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 2. CRAVINGS TAB -->
-    <section id="tab-cravings" class="space-y-8 hidden">
-      <div class="border-b border-gray-800 pb-4">
-        <h3 class="font-heading text-2xl font-bold text-white">Random Cravings & Snacks</h3>
-        <p class="text-xs text-gray-400">Sweet treats and traditional Mexican street snacks made fresh daily.</p>
-      </div>
-
-      <!-- Section 1: Usual Sweet Side -->
-      <div>
-        <div class="flex items-center gap-2 mb-4">
-          <i class="fa-solid fa-cake-candles text-pink-500 text-xl"></i>
-          <h4 class="font-heading text-xl font-bold text-pink-400">The Sweet Side</h4>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-            <h5 class="font-bold text-white mb-1">Cheesecake Bites</h5>
-            <p class="text-xs text-gray-400 mb-2">Rich cheesecake cubes served with strawberry drizzle.</p>
-            <span class="text-sm font-bold neon-yellow">$5.00</span>
-          </div>
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-            <h5 class="font-bold text-white mb-1">Pumpkin Pie Slice</h5>
-            <p class="text-xs text-gray-400 mb-2">Homemade spiced pumpkin pie with whip topping.</p>
-            <span class="text-sm font-bold neon-yellow">$4.00</span>
-          </div>
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-            <h5 class="font-bold text-white mb-1">Banana Bread Slice</h5>
-            <p class="text-xs text-gray-400 mb-2">Moist, buttery slice made with ripe sweet bananas.</p>
-            <span class="text-sm font-bold neon-yellow">$3.50</span>
-          </div>
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-            <h5 class="font-bold text-white mb-1">Golden Cornbread</h5>
-            <p class="text-xs text-gray-400 mb-2">Sweet honey-infused southern style cornbread piece.</p>
-            <span class="text-sm font-bold neon-yellow">$3.00</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section 2: Mexican Side of Cravings -->
-      <div>
-        <div class="flex items-center gap-2 mb-4">
-          <i class="fa-solid fa-pepper-hot text-green-400 text-xl"></i>
-          <h4 class="font-heading text-xl font-bold text-green-400">Mexican Antojitos & Cravings</h4>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-            <h5 class="font-bold text-white mb-1">Elote en Vaso (Esquites)</h5>
-            <p class="text-xs text-gray-400 mb-2">Warm tender corn in a cup layered with mayo, cotija cheese, butter, lime, and chili powder.</p>
-            <span class="text-sm font-bold neon-yellow">$5.00</span>
-          </div>
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-            <h5 class="font-bold text-white mb-1">Mangonada</h5>
-            <p class="text-xs text-gray-400 mb-2">Chilled mango slushie swirled with chamoy, Tajín seasoning, and a tamarind candy straw.</p>
-            <span class="text-sm font-bold neon-yellow">$6.00</span>
-          </div>
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-            <h5 class="font-bold text-white mb-1">Fruit Cup with Chili & Lime</h5>
-            <p class="text-xs text-gray-400 mb-2">Fresh cut watermelon, pineapple, and cucumber drizzled with lime juice and Tajín.</p>
-            <span class="text-sm font-bold neon-yellow">$5.00</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. SPECIALS TAB -->
-    <section id="tab-specials" class="space-y-6 hidden">
-      <div class="rounded-3xl bg-gradient-to-b from-yellow-950/40 via-gray-900 to-gray-900 border-2 border-yellow-500/50 p-6 md:p-8">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div class="space-y-3 text-center md:text-left">
-            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-yellow-500 text-black">
-              🔥 EVERY THURSDAY SPECIAL
-            </span>
-            <h3 class="font-heading text-3xl md:text-4xl font-bold text-white">Zach & Jaime's Smoked Brisket</h3>
-            <p class="text-gray-300 text-sm max-w-lg">
-              Slow-smoked to perfection over hardwood by Zach and Jaime! Tender, juicy, spiced-rubbed brisket served warm every Thursday.
-            </p>
-            <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-4 text-xs font-semibold text-yellow-400">
-              <span><i class="fa-solid fa-clock mr-1"></i> Available Thursdays Only</span>
-              <span><i class="fa-solid fa-location-dot mr-1"></i> Wills Point, TX</span>
-            </div>
-          </div>
-          
-          <div class="w-full md:w-72 bg-black/60 rounded-2xl p-4 border border-yellow-500/30 text-center">
-            <i class="fa-solid fa-fire text-4xl text-yellow-500 mb-2"></i>
-            <h4 class="font-heading font-bold text-lg text-white mb-1">Pre-Order Recommended</h4>
-            <p class="text-xs text-gray-400 mb-4">Limited quantities smoked per week. Message us on social media to reserve your plate!</p>
-            <a href="https://www.facebook.com/61595391840825" target="_blank" class="block w-full py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl text-sm transition">
-              Reserve On Facebook
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. ABOUT US TAB -->
-    <section id="tab-about" class="space-y-8 hidden">
-      <div class="text-center max-w-2xl mx-auto space-y-3">
-        <h3 class="font-heading text-3xl font-bold text-white">Family Owned & Operated</h3>
-        <p class="text-gray-300 text-sm leading-relaxed">
-          Sabor en Familia! MexiBloom was born out of a shared family passion for colorful drinks, authentic Mexican street cravings, and delicious slow-smoked barbecue. Meet our family crew behind every recipe!
-        </p>
-      </div>
-
-      <!-- Team Members Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Karina -->
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-pink-500 transition">
-          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-500 mb-3">
-            <img src="https://i.ibb.co/3mykPTr9/karina.jpg" alt="Karina" class="w-full h-full object-cover">
-          </div>
-          <h4 class="font-heading text-xl font-bold text-white">Karina</h4>
-          <span class="text-xs text-pink-400 font-semibold">Co-Founder & Drink Creator</span>
-          <p class="text-xs text-gray-400 mt-2">Passionate about experimenting with recipes, dragonfruit flavors, and crafting custom apparel.</p>
-        </div>
-
-        <!-- Yvette -->
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-pink-500 transition">
-          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-500 mb-3">
-            <img src="https://i.ibb.co/6R22N0w4/yvette.jpg" alt="Yvette" class="w-full h-full object-cover">
-          </div>
-          <h4 class="font-heading text-xl font-bold text-white">Yvette</h4>
-          <span class="text-xs text-pink-400 font-semibold">Co-Founder & Chief Baker</span>
-          <p class="text-xs text-gray-400 mt-2">Mastermind behind our sweet bakery items including pumpkin pies, cheesecake, and fruit treats.</p>
-        </div>
-
-        <!-- Zach -->
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-green-500 transition">
-          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-green-500 mb-3">
-            <img src="https://i.ibb.co/Xfx74sKq/zach.jpg" alt="Zach" class="w-full h-full object-cover">
-          </div>
-          <h4 class="font-heading text-xl font-bold text-white">Zach</h4>
-          <span class="text-xs text-green-400 font-semibold">Pitmaster & Logistics</span>
-          <p class="text-xs text-gray-400 mt-2">Co-creator of the famous Thursday Smoked Brisket and managing event setups.</p>
-        </div>
-
-        <!-- Jaime -->
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center hover:border-green-500 transition">
-          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-green-500 mb-3">
-            <img src="https://i.ibb.co/v4bSbb2y/jaime.jpg" alt="Jaime" class="w-full h-full object-cover">
-          </div>
-          <h4 class="font-heading text-xl font-bold text-white">Jaime</h4>
-          <span class="text-xs text-green-400 font-semibold">Pitmaster & Flavor Specialist</span>
-          <p class="text-xs text-gray-400 mt-2">Works alongside Zach on the smoker to prepare authentic slow-cooked barbecue meats.</p>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-950 border-t border-gray-800 py-6 mt-12">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-      <div class="text-center sm:text-left">
-        <p class="font-heading text-sm text-gray-300 font-bold">MexiBloom • Wills Point, TX</p>
-        <p>Made with love • Hecho con amor</p>
-      </div>
-      <div class="flex gap-4 text-lg">
-        <a href="https://www.facebook.com/61595391840825" target="_blank" class="hover:text-blue-500 transition"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/mexibloomtexas" target="_blank" class="hover:text-pink-500 transition"><i class="fa-brands fa-instagram"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript Navigation Logic -->
-  <script>
-    function switchTab(tabName) {
-      // Hide all tabs
-      document.getElementById('tab-drinks').classList.add('hidden');
-      document.getElementById('tab-cravings').classList.add('hidden');
-      document.getElementById('tab-specials').classList.add('hidden');
-      document.getElementById('tab-about').classList.add('hidden');
-
-      // Reset main nav styles
-      document.getElementById('nav-drinks').classList.remove('tab-active');
-      document.getElementById('nav-cravings').classList.remove('tab-active');
-      document.getElementById('nav-specials').classList.remove('tab-active');
-      document.getElementById('nav-about').classList.remove('tab-active');
-
-      // Show targeted tab & highlight button
-      document.getElementById('tab-' + tabName).classList.remove('hidden');
-      document.getElementById('nav-' + tabName).classList.add('tab-active');
-    }
-
-    function filterDrinks(category) {
-      const cards = document.querySelectorAll('.drink-card');
-      const buttons = ['all', 'matcha', 'coffee', 'lemonade', 'smoothie'];
-
-      // Reset category filter buttons
-      buttons.forEach(btn => {
-        const el = document.getElementById('filter-' + btn);
-        if (el) el.classList.remove('subtab-active');
-      });
-      document.getElementById('filter-' + category).classList.add('subtab-active');
-
-      // Show/hide cards
-      cards.forEach(card => {
-        if (category === 'all' || card.classList.contains(category)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bloom: {
+                            50: '#FFF8F5',
+                            100: '#FDF0EC',
+                            200: '#F8DCDB',
+                            300: '#F2B9BC',
+                            400: '#E8A5B8',
+                            500: '#D66A8B',
+                            600: '#BD486C',
+                            700: '#8C4B5D',
+                            800: '#5C303D',
+                            900: '#3A1E27',
+                            gold: '#D4A359',
+                            cream: '#FAF6F0'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
         }
-      });
-    }
-  </script>
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFF8F5;
+            color: #3A1E27;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E8A5B8;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D66A8B;
+        }
+        .backdrop-blur-custom {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .tab-active {
+            background-color: #BD486C;
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px 0 rgba(189, 72, 108, 0.39);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-24 md:pb-12 antialiased selection:bg-bloom-300 selection:text-bloom-900">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-bloom-800 text-bloom-100 text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-inner flex flex-wrap items-center justify-center gap-2">
+        <span>📍 <strong>Located in Wills Point, Texas</strong></span>
+        <span class="hidden sm:inline">|</span>
+        <span>Call or SMS Order: 
+            <a href="tel:16827601868" class="underline hover:text-bloom-300 font-bold tracking-wide transition">(682) 760-1868</a>
+        </span>
+    </div>
+
+    <!-- HEADER / HERO BRANDING -->
+    <header class="bg-gradient-to-b from-bloom-100 to-bloom-50 border-b border-bloom-200/60 sticky top-0 z-30 backdrop-blur-custom bg-opacity-95">
+        <div class="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-bloom-800 p-1 flex items-center justify-center shadow-md border-2 border-bloom-300 transform hover:scale-105 transition-transform duration-300">
+                    <!-- Custom SVG Hibiscus Floral Emblem -->
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-bloom-200 fill-current">
+                        <circle cx="50" cy="50" r="46" fill="#2A161C" stroke="#E8A5B8" stroke-width="2"/>
+                        <path d="M50,20 C55,32 65,30 65,40 C65,50 55,48 50,55 C45,48 35,50 35,40 C35,30 45,32 50,20 Z" fill="#E8A5B8"/>
+                        <path d="M50,80 C55,68 65,70 65,60 C65,50 55,52 50,45 C45,52 35,50 35,60 C35,70 45,68 50,80 Z" fill="#D66A8B"/>
+                        <path d="M20,50 C32,55 30,65 40,65 C50,65 48,55 55,50 C48,45 50,35 40,35 C30,35 32,45 20,50 Z" fill="#BD486C"/>
+                        <path d="M80,50 C68,55 70,65 60,65 C50,65 52,55 45,50 C52,45 50,35 60,35 C70,35 68,45 80,50 Z" fill="#E8A5B8"/>
+                        <circle cx="50" cy="50" r="8" fill="#FCE7F3"/>
+                        <circle cx="50" cy="50" r="4" fill="#D4A359"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-serif-title text-xl sm:text-2xl font-bold text-bloom-900 tracking-tight leading-none">MexiBloom</h1>
+                    <p class="text-xs text-bloom-700 font-medium tracking-wider uppercase mt-1">Sip, Snack, & Bloom</p>
+                </div>
+            </div>
+
+            <!-- Quick Action Phone & Cart -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="tel:16827601868" class="hidden md:flex items-center gap-2 px-3 py-2 bg-bloom-200 text-bloom-900 hover:bg-bloom-300 rounded-full text-xs font-semibold transition shadow-sm">
+                    <i class="fa-solid fa-phone text-bloom-700"></i>
+                    <span>(682) 760-1868</span>
+                </a>
+                <button onclick="toggleCartModal()" class="relative p-2.5 sm:px-4 sm:py-2.5 bg-bloom-600 hover:bg-bloom-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition flex items-center gap-2 group">
+                    <i class="fa-solid fa-shopping-bag text-lg group-hover:scale-110 transition-transform"></i>
+                    <span class="hidden sm:inline text-sm">Cart</span>
+                    <span id="cartBadge" class="bg-bloom-100 text-bloom-800 text-xs font-bold px-2 py-0.5 rounded-full border border-bloom-300">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- MAIN TABS NAVIGATION -->
+        <nav class="max-w-4xl mx-auto px-4 pb-3 pt-1">
+            <div class="bg-bloom-100/80 p-1.5 rounded-2xl border border-bloom-200/80 flex justify-between gap-1 shadow-inner">
+                <button onclick="switchTab('drinks')" id="tabBtn-drinks" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 tab-active">
+                    <i class="fa-solid fa-mug-hot text-base"></i>
+                    <span>Drinks</span>
+                </button>
+                <button onclick="switchTab('snacks')" id="tabBtn-snacks" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm text-bloom-800 hover:text-bloom-900 hover:bg-bloom-200/50 transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-cookie-bite text-base"></i>
+                    <span>Snacks</span>
+                </button>
+                <button onclick="switchTab('wellness')" id="tabBtn-wellness" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm text-bloom-800 hover:text-bloom-900 hover:bg-bloom-200/50 transition-all duration-200 flex items-center justify-center gap-2 text-center">
+                    <i class="fa-solid fa-leaf text-base text-emerald-600"></i>
+                    <span class="truncate">Health & Wellness</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- ================= DRINKS SECTION ================= -->
+        <section id="section-drinks" class="tab-content transition-opacity duration-300">
+            <!-- Filter Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-4 scrollbar-none">
+                <button onclick="filterDrinks('all')" class="drink-filter-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border border-bloom-300 bg-bloom-600 text-white shadow-sm" data-filter="all">All Drinks</button>
+                <button onclick="filterDrinks('coffee')" class="drink-filter-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border border-bloom-300 bg-white text-bloom-800 hover:bg-bloom-100 shadow-sm" data-filter="coffee">Coffee</button>
+                <button onclick="filterDrinks('lemonade')" class="drink-filter-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border border-bloom-300 bg-white text-bloom-800 hover:bg-bloom-100 shadow-sm" data-filter="lemonade">Lemonades & Refreshers</button>
+                <button onclick="filterDrinks('matcha')" class="drink-filter-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border border-bloom-300 bg-white text-bloom-800 hover:bg-bloom-100 shadow-sm" data-filter="matcha">Matcha & Tea Specialty</button>
+                <button onclick="filterDrinks('smoothie')" class="drink-filter-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border border-bloom-300 bg-white text-bloom-800 hover:bg-bloom-100 shadow-sm" data-filter="smoothie">Smoothies</button>
+            </div>
+
+            <!-- Drinks Grid -->
+            <div id="drinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Drinks dynamically rendered by JS -->
+            </div>
+        </section>
+
+
+        <!-- ================= SNACKS SECTION ================= -->
+        <section id="section-snacks" class="tab-content hidden transition-opacity duration-300">
+            <div class="mb-6 bg-bloom-100 p-4 rounded-2xl border border-bloom-200 flex items-center gap-3">
+                <div class="p-3 bg-bloom-200 rounded-xl text-bloom-700">
+                    <i class="fa-solid fa-utensils text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="font-serif-title text-lg font-bold text-bloom-900">Delicious Snacks & Treats</h2>
+                    <p class="text-xs text-bloom-700">Handcrafted, fresh local recipes made with love in Wills Point!</p>
+                </div>
+            </div>
+
+            <div id="snacksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Snacks dynamically rendered by JS -->
+            </div>
+        </section>
+
+
+        <!-- ================= HEALTH & WELLNESS SECTION ================= -->
+        <section id="section-wellness" class="tab-content hidden transition-opacity duration-300">
+            <div class="mb-6 bg-emerald-950 text-emerald-50 p-5 rounded-2xl shadow-lg border border-emerald-800 relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="px-2.5 py-1 bg-emerald-800/80 text-emerald-200 text-xs font-bold rounded-md uppercase tracking-wider mb-2 inline-block">Nourish & Restore</span>
+                    <h2 class="font-serif-title text-2xl font-bold text-emerald-100 mb-1">Health & Wellness Teas</h2>
+                    <p class="text-emerald-200/90 text-xs sm:text-sm">Carefully selected herbal infusions and saffron brews crafted to support digestion, energy, skin radiance, and balance.</p>
+                </div>
+                <i class="fa-solid fa-spa opacity-10 text-9xl absolute -right-4 -bottom-6 text-emerald-200"></i>
+            </div>
+
+            <div id="wellnessGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Wellness teas dynamically rendered by JS -->
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-bloom-900 text-bloom-200 py-8 px-4 mt-12 border-t border-bloom-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <h3 class="font-serif-title text-xl font-bold text-bloom-100">MexiBloom - Sip, Snack, & Bloom</h3>
+                <p class="text-xs text-bloom-300 mt-1">Made with love • Hecho con amor in Wills Point, Texas</p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-4 text-xs">
+                <a href="tel:16827601868" class="flex items-center gap-2 bg-bloom-800 px-4 py-2 rounded-xl text-bloom-100 hover:bg-bloom-700 transition">
+                    <i class="fa-solid fa-phone text-bloom-300"></i>
+                    <span>(682) 760-1868</span>
+                </a>
+                <span class="text-bloom-400">📍 Wills Point, TX</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ================= MODAL: CUSTOMIZATION / ADD TO CART ================= -->
+    <div id="customizeModal" class="fixed inset-0 bg-bloom-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-bloom-200 animate-in fade-in zoom-in-95 duration-200">
+            <!-- Modal Header -->
+            <div class="p-5 bg-gradient-to-r from-bloom-100 to-bloom-50 border-b border-bloom-200 flex items-start justify-between relative">
+                <div>
+                    <span id="modalCategoryBadge" class="text-[10px] font-bold uppercase tracking-wider bg-bloom-200 text-bloom-800 px-2 py-0.5 rounded-md">Category</span>
+                    <h3 id="modalTitle" class="font-serif-title text-xl font-bold text-bloom-900 mt-1">Item Title</h3>
+                    <p id="modalPrice" class="text-sm font-bold text-bloom-600 mt-0.5">$0.00</p>
+                </div>
+                <button onclick="closeCustomizeModal()" class="text-bloom-700 hover:text-bloom-900 bg-white/80 hover:bg-white p-2 rounded-full transition shadow-sm">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body (Scrollable) -->
+            <div class="p-5 overflow-y-auto space-y-5 text-sm flex-grow" id="modalBody">
+                <p id="modalDescription" class="text-xs text-bloom-800/80 leading-relaxed italic bg-bloom-50 p-3 rounded-xl border border-bloom-100">Item description goes here.</p>
+
+                <!-- Milk Selection Options (Conditional) -->
+                <div id="milkSection" class="hidden">
+                    <label class="block font-bold text-bloom-900 text-xs uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-cow text-bloom-600 mr-1"></i> Select Milk Base
+                    </label>
+                    <div class="grid grid-cols-2 gap-2" id="milkOptions">
+                        <!-- Rendered JS -->
+                    </div>
+                </div>
+
+                <!-- Toppings Options (Conditional) -->
+                <div id="toppingsSection" class="hidden">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="font-bold text-bloom-900 text-xs uppercase tracking-wider">
+                            <i class="fa-solid fa-cubes text-bloom-600 mr-1"></i> Add Boba & Toppings
+                        </label>
+                        <span class="text-[11px] text-bloom-600 font-semibold">+$0.75 each</span>
+                    </div>
+                    <div class="space-y-2" id="toppingOptions">
+                        <!-- Rendered JS -->
+                    </div>
+                </div>
+
+                <!-- Special Options (Pies / Snack & Sip Selections) -->
+                <div id="optionsSection" class="hidden">
+                    <label id="optionsSectionLabel" class="block font-bold text-bloom-900 text-xs uppercase tracking-wider mb-2">
+                        Select Choice
+                    </label>
+                    <div class="space-y-2" id="customOptionsContainer">
+                        <!-- Rendered JS -->
+                    </div>
+                </div>
+
+                <!-- Wellness Tea Benefits Box (Conditional) -->
+                <div id="wellnessInfoSection" class="hidden bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-xs space-y-2 text-emerald-900">
+                    <div>
+                        <strong class="text-emerald-700 block">✨ Primary Benefit:</strong>
+                        <span id="wellnessBenefitText">Benefit details</span>
+                    </div>
+                    <div>
+                        <strong class="text-emerald-700 block">👍 Great For:</strong>
+                        <span id="wellnessGoodForText">Good for details</span>
+                    </div>
+                    <div class="pt-1 border-t border-emerald-200/60">
+                        <strong class="text-amber-800 block">⚠️ Note / Avoid:</strong>
+                        <span id="wellnessAvoidText" class="text-amber-900">Avoid details</span>
+                    </div>
+                </div>
+
+                <!-- Special Instructions Comments -->
+                <div>
+                    <label for="itemComments" class="block font-bold text-bloom-900 text-xs uppercase tracking-wider mb-1.5">
+                        <i class="fa-regular fa-comment-dots text-bloom-600 mr-1"></i> Special Instructions / Comments
+                    </label>
+                    <textarea id="itemComments" rows="2" placeholder="e.g. Extra ice, less sweet, allergy notes..." class="w-full text-xs p-3 rounded-xl border border-bloom-200 focus:ring-2 focus:ring-bloom-400 focus:outline-none bg-bloom-50/50"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-bloom-50 border-t border-bloom-200 flex items-center justify-between gap-3">
+                <!-- Quantity Counter -->
+                <div class="flex items-center bg-white border border-bloom-200 rounded-full p-1 shadow-sm">
+                    <button onclick="adjustModalQty(-1)" class="w-8 h-8 rounded-full bg-bloom-100 text-bloom-800 font-bold hover:bg-bloom-200 flex items-center justify-center transition">-</button>
+                    <span id="modalQty" class="w-8 text-center font-bold text-bloom-900 text-sm">1</span>
+                    <button onclick="adjustModalQty(1)" class="w-8 h-8 rounded-full bg-bloom-100 text-bloom-800 font-bold hover:bg-bloom-200 flex items-center justify-center transition">+</button>
+                </div>
+
+                <!-- Add Button -->
+                <button onclick="addCurrentItemToCart()" class="flex-1 bg-bloom-600 hover:bg-bloom-700 text-white py-3 px-4 rounded-full font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add to Cart • <span id="modalCalculatedPrice">$0.00</span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= CART MODAL / DRAWER ================= -->
+    <div id="cartModal" class="fixed inset-0 bg-bloom-900/60 backdrop-blur-sm z-50 hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl animate-in slide-in-from-right duration-300">
+            <!-- Cart Header -->
+            <div class="p-4 bg-bloom-800 text-white flex items-center justify-between border-b border-bloom-900">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shopping-bag text-bloom-300"></i>
+                    <h2 class="font-serif-title text-lg font-bold">Your Order Cart</h2>
+                </div>
+                <button onclick="toggleCartModal()" class="text-bloom-300 hover:text-white p-1 rounded-full">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items List (Scrollable) -->
+            <div id="cartItemsContainer" class="flex-grow overflow-y-auto p-4 space-y-3">
+                <!-- Cart items rendered JS -->
+            </div>
+
+            <!-- Customer Order Details Form & Checkout Actions -->
+            <div id="cartCheckoutFooter" class="p-4 bg-bloom-50 border-t border-bloom-200 space-y-3">
+                <!-- Customer Details Inputs -->
+                <div class="space-y-2">
+                    <div>
+                        <label class="block text-[11px] font-bold text-bloom-800 uppercase tracking-wider mb-1">Your Name *</label>
+                        <input type="text" id="custName" placeholder="e.g. Maria G." class="w-full text-xs p-2.5 rounded-xl border border-bloom-200 focus:ring-2 focus:ring-bloom-400 focus:outline-none bg-white">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-bloom-800 uppercase tracking-wider mb-1">Phone *</label>
+                            <input type="tel" id="custPhone" placeholder="(682) 000-0000" class="w-full text-xs p-2.5 rounded-xl border border-bloom-200 focus:ring-2 focus:ring-bloom-400 focus:outline-none bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-bloom-800 uppercase tracking-wider mb-1">Pickup Time</label>
+                            <input type="text" id="custTime" placeholder="e.g. In 20 mins" class="w-full text-xs p-2.5 rounded-xl border border-bloom-200 focus:ring-2 focus:ring-bloom-400 focus:outline-none bg-white">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="pt-2 border-t border-bloom-200 text-xs space-y-1">
+                    <div class="flex justify-between text-bloom-700">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal" class="font-semibold">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-bloom-700">
+                        <span>Est. Tax (8.25%)</span>
+                        <span id="cartTax" class="font-semibold">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-bold text-bloom-900 pt-1 border-t border-bloom-200">
+                        <span>Total</span>
+                        <span id="cartTotal" class="text-bloom-600 text-base">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="space-y-2 pt-1">
+                    <!-- Send SMS Button -->
+                    <button onclick="sendOrderViaSMS()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Send Order via SMS</span>
+                    </button>
+
+                    <!-- Direct Call Button -->
+                    <a href="tel:16827601868" class="w-full bg-bloom-800 hover:bg-bloom-900 text-white font-bold py-2.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Call Order In (682) 760-1868</span>
+                    </a>
+
+                    <!-- Copy Order Text -->
+                    <button onclick="copyOrderToClipboard()" class="w-full bg-bloom-200 hover:bg-bloom-300 text-bloom-900 font-semibold py-2 px-3 rounded-xl transition flex items-center justify-center gap-2 text-xs">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Copy Order Text</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // ================= MENU DATA STRUCTURE =================
+        const MENU_DATA = {
+            drinks: [
+                // Matcha & Tea Specialty
+                {
+                    id: 'd1',
+                    name: 'Strawberry Matcha Latte',
+                    price: 6.50,
+                    category: 'matcha',
+                    badge: 'Specialty Tea',
+                    desc: 'Layered fresh strawberry puree, organic ceremonial grade matcha, and creamy milk.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+                {
+                    id: 'd2',
+                    name: 'Classic Brown Sugar Bubble Milk Tea',
+                    price: 6.00,
+                    category: 'matcha',
+                    badge: 'Boba Classic',
+                    desc: 'Rich black tea infused with caramelized brown sugar syrup and smooth milk.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+                {
+                    id: 'd3',
+                    name: 'Mango Jasmine Green Tea',
+                    price: 5.50,
+                    category: 'matcha',
+                    badge: 'Refreshing',
+                    desc: 'Fragrant jasmine green tea infused with sweet mango puree and real fruit bits.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+                {
+                    id: 'd4',
+                    name: 'Watermelon Oolong Fruit Tea',
+                    price: 6.00,
+                    category: 'matcha',
+                    badge: 'Fruit Tea',
+                    desc: 'Premium high-mountain oolong tea shaken with fresh watermelon juice.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+
+                // Coffee & Specialty Blended
+                {
+                    id: 'd5',
+                    name: 'Chocolate Chip Frappe',
+                    price: 6.50,
+                    category: 'coffee',
+                    badge: 'Blended',
+                    desc: 'Blended espresso, dark chocolate chips, milk, topped with whipped cream.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+                {
+                    id: 'd6',
+                    name: 'Pistachio Cream Iced Coffee',
+                    price: 6.00,
+                    category: 'coffee',
+                    badge: 'House Favorite',
+                    desc: 'Signature iced coffee topped with rich pistachio cold foam cream.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+                {
+                    id: 'd7',
+                    name: 'Pumpkin Pie Latte',
+                    price: 6.00,
+                    category: 'coffee',
+                    badge: 'Seasonal',
+                    desc: 'Espresso with warm pumpkin spice, steamed or iced with custom milk.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+                {
+                    id: 'd8',
+                    name: 'Mock Coffee Liqueur Iced Latte',
+                    price: 5.50,
+                    category: 'coffee',
+                    badge: 'Mocktail Style',
+                    desc: 'Non-alcoholic coffee liqueur syrup paired with fresh cold espresso and milk.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+                {
+                    id: 'd9',
+                    name: 'Classic Iced Coffee',
+                    price: 4.50,
+                    category: 'coffee',
+                    badge: 'Classic',
+                    desc: 'Smooth cold brewed specialty coffee served over ice.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+
+                // Lemonades & Refreshers
+                {
+                    id: 'd10',
+                    name: 'Classic Fresh Lemonade',
+                    price: 4.50,
+                    category: 'lemonade',
+                    badge: 'Fresh Squeezed',
+                    desc: 'Real lemons squeezed daily with pure cane sugar and filtered water.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+                {
+                    id: 'd11',
+                    name: 'Blue Raspberry Lemonade',
+                    price: 5.00,
+                    category: 'lemonade',
+                    badge: 'Vibrant',
+                    desc: 'Tangy fresh lemonade mixed with sweet blue raspberry infusion.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+                {
+                    id: 'd12',
+                    name: 'Watermelon Mint Lemonade',
+                    price: 5.50,
+                    category: 'lemonade',
+                    badge: 'Cooling',
+                    desc: 'Fresh crushed mint, crisp watermelon juice, and classic lemonade.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+                {
+                    id: 'd13',
+                    name: 'Strawberry Lemonade',
+                    price: 5.00,
+                    category: 'lemonade',
+                    badge: 'Popular',
+                    desc: 'Fresh tart lemonade swirled with sweet ripe strawberry syrup.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+                {
+                    id: 'd14',
+                    name: 'Mango Lemonade',
+                    price: 5.00,
+                    category: 'lemonade',
+                    badge: 'Tropical',
+                    desc: 'Tropical mango puree combined with crisp house lemonade.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+                {
+                    id: 'd15',
+                    name: 'Dragonfruit Lemonade',
+                    price: 5.50,
+                    category: 'lemonade',
+                    badge: 'Exotic',
+                    desc: 'Vibrant red dragonfruit extract blended into zesty lemonade.',
+                    hasMilk: false,
+                    hasToppings: true
+                },
+
+                // Smoothies
+                {
+                    id: 'd16',
+                    name: 'Banana, Pecan, and Chocolate Smoothie',
+                    price: 6.50,
+                    category: 'smoothie',
+                    badge: 'Nutritious',
+                    desc: 'Creamy banana, roasted Texas pecans, dark cocoa, and choice of milk.',
+                    hasMilk: true,
+                    hasToppings: true
+                },
+                {
+                    id: 'd17',
+                    name: 'Strawberry Banana Smoothie',
+                    price: 5.50,
+                    category: 'smoothie',
+                    badge: 'Fruit Smoothie',
+                    desc: 'Ripe strawberries, fresh banana, and ice blended smooth.',
+                    hasMilk: true,
+                    hasToppings: true
+                }
+            ],
+
+            snacks: [
+                {
+                    id: 's1',
+                    name: 'Fruit in a Cup',
+                    price: 4.50,
+                    badge: 'Fresh Fruit',
+                    desc: 'Freshly diced seasonal fruits served cold in a cup.'
+                },
+                {
+                    id: 's2',
+                    name: 'Fresas con Crema',
+                    price: 5.50,
+                    badge: 'Signature Dessert',
+                    desc: 'Fresh sliced strawberries folded in sweet homemade crema topped with granillo.'
+                },
+                {
+                    id: 's3',
+                    name: 'Elote en Vaso',
+                    price: 6.00,
+                    badge: 'Street Corn',
+                    desc: 'Warm sweet corn in a cup with cotija cheese, mayo, butter, chili powder, and lime.'
+                },
+                {
+                    id: 's4',
+                    name: 'Pie Slice',
+                    price: 3.00,
+                    badge: 'Baked Goods',
+                    desc: 'Decadent bakery slice. Choose your favorite flavor below!',
+                    optionsType: 'single',
+                    optionsTitle: 'Select Pie Flavor',
+                    options: ['Pumpkin Pie', 'Cheese Cake', 'Ricotta & Pistachio Cake']
+                },
+                {
+                    id: 's5',
+                    name: 'Loaded Nachos',
+                    price: 8.00,
+                    badge: 'Savory',
+                    desc: 'Crispy tortilla chips topped with warm jalapeño cheese sauce, beans, cream, and salsa.'
+                },
+                {
+                    id: 's6',
+                    name: 'Snack & Sip - Build Your Own',
+                    price: 10.00,
+                    badge: 'Combo Value',
+                    desc: 'Create your ultimate snack tray! Choose your favorite combination items below:',
+                    optionsType: 'multiple',
+                    optionsTitle: 'Choose Your Options',
+                    options: ['Mini Pancakes', 'Protein Chocolate Dates', 'Fruit', 'Cheese Cake Bites']
+                }
+            ],
+
+            wellnessTeas: [
+                {
+                    id: 'w1',
+                    name: 'Golden Saffron and Jasmine Glow',
+                    price: 7.50,
+                    badge: 'Skin & Immunity',
+                    benefit: 'Anti-inflammatory, antioxidant boost.',
+                    goodFor: 'Skin glow, general well-being.',
+                    avoid: 'Excessive use; seek medical advice if pregnant.'
+                },
+                {
+                    id: 'w2',
+                    name: 'Royal Saffron and Wu Yi Black Energizer',
+                    price: 7.50,
+                    badge: 'Energy & Focus',
+                    benefit: 'Natural energy boost, metabolism support.',
+                    goodFor: 'Mental focus, afternoon pick-me-up.',
+                    avoid: 'Late evening consumption due to caffeine content.'
+                },
+                {
+                    id: 'w3',
+                    name: 'Golden Hour Tropical Saffron Iced Tea',
+                    price: 7.25,
+                    badge: 'Hydration & Vitamin C',
+                    benefit: 'Refreshing, immune-boosting Vitamin C.',
+                    goodFor: 'Daily hydration, a healthy sweet treat.',
+                    avoid: 'Individuals with high citrus acid sensitivity.'
+                },
+                {
+                    id: 'w4',
+                    name: 'Roasted Wuyi Rock and Oolong Metabolism Brew',
+                    price: 6.50,
+                    badge: 'Digestion & Fit',
+                    benefit: 'Metabolism aid, digestion support.',
+                    goodFor: 'After meals, weight management.',
+                    avoid: 'Those who are very sensitive to caffeine.'
+                },
+                {
+                    id: 'w5',
+                    name: 'Women/Pregnancy Nurturing Tea',
+                    price: 6.50,
+                    badge: 'Gentle Support',
+                    benefit: 'Soothing, rich in natural trace minerals.',
+                    goodFor: 'Stress relief, natural hormonal support.',
+                    avoid: 'Not formulated for men.'
+                },
+                {
+                    id: 'w6',
+                    name: 'Emerald Matcha Saffron Latte',
+                    price: 8.25,
+                    badge: 'Clarity & Antioxidants',
+                    benefit: 'Long-lasting energy, high antioxidants.',
+                    goodFor: 'Mental clarity, sustained daily focus.',
+                    avoid: 'Consuming on an empty stomach for sensitive stomachs.'
+                }
+            ],
+
+            milks: [
+                { id: 'regular', name: 'Regular Milk', price: 0 },
+                { id: '2percent', name: '2% Milk', price: 0 },
+                { id: 'oat', name: 'Oat Milk', price: 0 },
+                { id: 'almond', name: 'Almond Milk', price: 0 }
+            ],
+
+            toppings: [
+                { id: 't1', name: 'Black Tapioca Pearls', price: 0.75 },
+                { id: 't2', name: 'Lychee Popping Boba', price: 0.75 },
+                { id: 't3', name: 'Mango Star Jelly', price: 0.75 },
+                { id: 't4', name: 'Grass Jelly', price: 0.75 }
+            ]
+        };
+
+        // Global State Variables
+        let cart = [];
+        let activeTab = 'drinks';
+        let currentFilter = 'all';
+        let currentModalItem = null;
+        let currentModalQty = 1;
+        let selectedMilk = 'Regular Milk';
+        let selectedToppings = [];
+        let selectedCustomOptions = [];
+
+        // Initialize on page load
+        window.onload = function() {
+            renderDrinks();
+            renderSnacks();
+            renderWellnessTeas();
+            updateCartUI();
+        };
+
+        // ================= TAB SWITCHING =================
+        function switchTab(tab) {
+            activeTab = tab;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            const targetSection = document.getElementById(`section-${tab}`);
+            if (targetSection) targetSection.classList.remove('hidden');
+
+            // Reset tab button states
+            ['drinks', 'snacks', 'wellness'].forEach(t => {
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (t === tab) {
+                    btn.className = 'flex-1 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 tab-active';
+                } else {
+                    btn.className = 'flex-1 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm text-bloom-800 hover:text-bloom-900 hover:bg-bloom-200/50 transition-all duration-200 flex items-center justify-center gap-2';
+                }
+            });
+        }
+
+        // ================= FILTER DRINKS =================
+        function filterDrinks(category) {
+            currentFilter = category;
+            document.querySelectorAll('.drink-filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = 'drink-filter-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border border-bloom-300 bg-bloom-600 text-white shadow-sm';
+                } else {
+                    btn.className = 'drink-filter-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border border-bloom-300 bg-white text-bloom-800 hover:bg-bloom-100 shadow-sm';
+                }
+            });
+            renderDrinks();
+        }
+
+        // ================= RENDER DRINKS =================
+        function renderDrinks() {
+            const grid = document.getElementById('drinksGrid');
+            grid.innerHTML = '';
+
+            const filtered = currentFilter === 'all' 
+                ? MENU_DATA.drinks 
+                : MENU_DATA.drinks.filter(d => d.category === currentFilter);
+
+            filtered.forEach(drink => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl p-5 border border-bloom-200/70 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-bloom-100 text-bloom-700 px-2.5 py-1 rounded-full border border-bloom-200">${drink.badge}</span>
+                            <span class="font-serif-title font-bold text-lg text-bloom-800">$${drink.price.toFixed(2)}</span>
+                        </div>
+                        <h3 class="font-serif-title font-bold text-base text-bloom-900 group-hover:text-bloom-600 transition-colors">${drink.name}</h3>
+                        <p class="text-xs text-bloom-700/80 mt-1.5 leading-relaxed">${drink.desc}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-bloom-100 flex items-center justify-between">
+                        <span class="text-[11px] text-bloom-500 italic">${drink.hasMilk ? '🥛 Milk Choices' : '🍋 Freshly Brewed'}</span>
+                        <button onclick="openCustomizeModal('drink', '${drink.id}')" class="bg-bloom-100 hover:bg-bloom-600 text-bloom-800 hover:text-white px-3.5 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                            <span>Add</span>
+                            <i class="fa-solid fa-plus text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ================= RENDER SNACKS =================
+        function renderSnacks() {
+            const grid = document.getElementById('snacksGrid');
+            grid.innerHTML = '';
+
+            MENU_DATA.snacks.forEach(snack => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl p-5 border border-bloom-200/70 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-800 px-2.5 py-1 rounded-full border border-amber-200">${snack.badge}</span>
+                            <span class="font-serif-title font-bold text-lg text-bloom-800">$${snack.price.toFixed(2)}</span>
+                        </div>
+                        <h3 class="font-serif-title font-bold text-base text-bloom-900 group-hover:text-bloom-600 transition-colors">${snack.name}</h3>
+                        <p class="text-xs text-bloom-700/80 mt-1.5 leading-relaxed">${snack.desc}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-bloom-100 flex items-center justify-between">
+                        <span class="text-[11px] text-bloom-500 italic">${snack.options ? '✨ Customizable Options' : '🍓 Made Fresh'}</span>
+                        <button onclick="openCustomizeModal('snack', '${snack.id}')" class="bg-bloom-100 hover:bg-bloom-600 text-bloom-800 hover:text-white px-3.5 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                            <span>Add</span>
+                            <i class="fa-solid fa-plus text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ================= RENDER WELLNESS TEAS =================
+        function renderWellnessTeas() {
+            const grid = document.getElementById('wellnessGrid');
+            grid.innerHTML = '';
+
+            MENU_DATA.wellnessTeas.forEach(tea => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl p-5 border border-emerald-200/80 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between relative overflow-hidden';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full border border-emerald-300">${tea.badge}</span>
+                            <span class="font-serif-title font-bold text-lg text-emerald-900">$${tea.price.toFixed(2)}</span>
+                        </div>
+                        <h3 class="font-serif-title font-bold text-base text-emerald-950 mb-2">${tea.name}</h3>
+                        
+                        <div class="space-y-1.5 text-xs bg-emerald-50/60 p-3 rounded-2xl border border-emerald-100 text-emerald-900">
+                            <p><strong class="text-emerald-700">Benefit:</strong> ${tea.benefit}</p>
+                            <p><strong class="text-emerald-700">Good for:</strong> ${tea.goodFor}</p>
+                            <p class="text-[11px] text-amber-800"><strong class="text-amber-900">Avoid:</strong> ${tea.avoid}</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-emerald-100 flex items-center justify-between">
+                        <span class="text-[11px] text-emerald-600 font-medium"><i class="fa-solid fa-leaf mr-1"></i> Wellness Brew</span>
+                        <button onclick="openCustomizeModal('wellness', '${tea.id}')" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                            <span>Order Tea</span>
+                            <i class="fa-solid fa-plus text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ================= OPEN CUSTOMIZE MODAL =================
+        function openCustomizeModal(type, itemId) {
+            let item = null;
+            if (type === 'drink') item = MENU_DATA.drinks.find(d => d.id === itemId);
+            else if (type === 'snack') item = MENU_DATA.snacks.find(s => s.id === itemId);
+            else if (type === 'wellness') item = MENU_DATA.wellnessTeas.find(w => w.id === itemId);
+
+            if (!item) return;
+
+            currentModalItem = { ...item, itemType: type };
+            currentModalQty = 1;
+            selectedMilk = 'Regular Milk';
+            selectedToppings = [];
+            selectedCustomOptions = [];
+
+            // Reset inputs
+            document.getElementById('itemComments').value = '';
+            document.getElementById('modalQty').innerText = '1';
+
+            // Modal Header Info
+            document.getElementById('modalTitle').innerText = item.name;
+            document.getElementById('modalPrice').innerText = `$${item.price.toFixed(2)}`;
+            document.getElementById('modalCategoryBadge').innerText = item.badge || type;
+            document.getElementById('modalDescription').innerText = item.desc || item.benefit;
+
+            // Sections Visibility Reset
+            const milkSec = document.getElementById('milkSection');
+            const topSec = document.getElementById('toppingsSection');
+            const optSec = document.getElementById('optionsSection');
+            const wellSec = document.getElementById('wellnessInfoSection');
+
+            milkSec.classList.add('hidden');
+            topSec.classList.add('hidden');
+            optSec.classList.add('hidden');
+            wellSec.classList.add('hidden');
+
+            // Render Milk Section if applicable
+            if (item.hasMilk) {
+                milkSec.classList.remove('hidden');
+                const milkContainer = document.getElementById('milkOptions');
+                milkContainer.innerHTML = MENU_DATA.milks.map(m => `
+                    <label class="flex items-center gap-2 p-2.5 rounded-xl border border-bloom-200 bg-white hover:bg-bloom-50 cursor-pointer text-xs font-medium transition">
+                        <input type="radio" name="milkChoice" value="${m.name}" ${m.name === 'Regular Milk' ? 'checked' : ''} onchange="selectedMilk = this.value; recalculateModalTotal();" class="accent-bloom-600">
+                        <span>${m.name}</span>
+                    </label>
+                `).join('');
+            }
+
+            // Render Toppings Section if applicable
+            if (item.hasToppings) {
+                topSec.classList.remove('hidden');
+                const topContainer = document.getElementById('toppingOptions');
+                topContainer.innerHTML = MENU_DATA.toppings.map(t => `
+                    <label class="flex items-center justify-between p-2.5 rounded-xl border border-bloom-200 bg-white hover:bg-bloom-50 cursor-pointer text-xs font-medium transition">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" value="${t.id}" onchange="toggleTopping('${t.id}')" class="accent-bloom-600 rounded">
+                            <span>${t.name}</span>
+                        </div>
+                        <span class="text-bloom-600 font-bold">+$${t.price.toFixed(2)}</span>
+                    </label>
+                `).join('');
+            }
+
+            // Render Custom Snack Options (Pie slice flavors or Snack & Sip items)
+            if (item.options) {
+                optSec.classList.remove('hidden');
+                document.getElementById('optionsSectionLabel').innerText = item.optionsTitle || 'Select Choice';
+                const optContainer = document.getElementById('customOptionsContainer');
+
+                if (item.optionsType === 'single') {
+                    optContainer.innerHTML = item.options.map((opt, idx) => `
+                        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-bloom-200 bg-white hover:bg-bloom-50 cursor-pointer text-xs font-medium transition">
+                            <input type="radio" name="customSingleOpt" value="${opt}" ${idx === 0 ? 'checked' : ''} onchange="selectedCustomOptions = [this.value];" class="accent-bloom-600">
+                            <span>${opt}</span>
+                        </label>
+                    `).join('');
+                    selectedCustomOptions = [item.options[0]];
+                } else if (item.optionsType === 'multiple') {
+                    optContainer.innerHTML = item.options.map((opt) => `
+                        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-bloom-200 bg-white hover:bg-bloom-50 cursor-pointer text-xs font-medium transition">
+                            <input type="checkbox" value="${opt}" onchange="toggleCustomOption('${opt}')" class="accent-bloom-600 rounded">
+                            <span>${opt}</span>
+                        </label>
+                    `).join('');
+                }
+            }
+
+            // Render Wellness Info Box
+            if (type === 'wellness') {
+                wellSec.classList.remove('hidden');
+                document.getElementById('wellnessBenefitText').innerText = item.benefit;
+                document.getElementById('wellnessGoodForText').innerText = item.goodFor;
+                document.getElementById('wellnessAvoidText').innerText = item.avoid;
+            }
+
+            recalculateModalTotal();
+            document.getElementById('customizeModal').classList.remove('hidden');
+        }
+
+        function closeCustomizeModal() {
+            document.getElementById('customizeModal').classList.add('hidden');
+        }
+
+        function toggleTopping(toppingId) {
+            const index = selectedToppings.indexOf(toppingId);
+            if (index > -1) {
+                selectedToppings.splice(index, 1);
+            } else {
+                selectedToppings.push(toppingId);
+            }
+            recalculateModalTotal();
+        }
+
+        function toggleCustomOption(optValue) {
+            const index = selectedCustomOptions.indexOf(optValue);
+            if (index > -1) {
+                selectedCustomOptions.splice(index, 1);
+            } else {
+                selectedCustomOptions.push(optValue);
+            }
+        }
+
+        function adjustModalQty(delta) {
+            currentModalQty = Math.max(1, currentModalQty + delta);
+            document.getElementById('modalQty').innerText = currentModalQty;
+            recalculateModalTotal();
+        }
+
+        function recalculateModalTotal() {
+            if (!currentModalItem) return;
+            let singleUnitPrice = currentModalItem.price;
+
+            // Add topping prices
+            selectedToppings.forEach(tId => {
+                const topObj = MENU_DATA.toppings.find(t => t.id === tId);
+                if (topObj) singleUnitPrice += topObj.price;
+            });
+
+            const total = singleUnitPrice * currentModalQty;
+            document.getElementById('modalCalculatedPrice').innerText = `$${total.toFixed(2)}`;
+        }
+
+        // ================= ADD ITEM TO CART =================
+        function addCurrentItemToCart() {
+            if (!currentModalItem) return;
+
+            const comments = document.getElementById('itemComments').value.trim();
+
+            // Resolve topping object details
+            const toppingDetails = selectedToppings.map(tId => {
+                return MENU_DATA.toppings.find(t => t.id === tId);
+            }).filter(Boolean);
+
+            const cartItem = {
+                cartId: 'item_' + Date.now(),
+                id: currentModalItem.id,
+                name: currentModalItem.name,
+                basePrice: currentModalItem.price,
+                quantity: currentModalQty,
+                hasMilk: !!currentModalItem.hasMilk,
+                milk: currentModalItem.hasMilk ? selectedMilk : null,
+                toppings: toppingDetails,
+                customOptions: [...selectedCustomOptions],
+                comments: comments
+            };
+
+            cart.push(cartItem);
+            updateCartUI();
+            closeCustomizeModal();
+            toggleCartModal(true); // Open cart to confirm addition
+        }
+
+        // ================= CART MANAGEMENT =================
+        function toggleCartModal(forceOpen = false) {
+            const modal = document.getElementById('cartModal');
+            if (forceOpen || modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function updateCartQty(cartId, delta) {
+            const item = cart.find(i => i.cartId === cartId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    deleteCartItem(cartId);
+                    return;
+                }
+            }
+            updateCartUI();
+        }
+
+        function deleteCartItem(cartId) {
+            cart = cart.filter(i => i.cartId !== cartId);
+            updateCartUI();
+        }
+
+        function calculateItemTotal(item) {
+            let price = item.basePrice;
+            if (item.toppings && item.toppings.length > 0) {
+                item.toppings.forEach(t => price += t.price);
+            }
+            return price * item.quantity;
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const badge = document.getElementById('cartBadge');
+            
+            const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badge.innerText = totalItemsCount;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 px-4 text-bloom-600">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-bloom-300"></i>
+                        <p class="font-serif-title font-bold text-base text-bloom-900">Your Cart is Empty</p>
+                        <p class="text-xs text-bloom-600 mt-1">Explore our drinks, snacks, and teas to start building your order!</p>
+                    </div>
+                `;
+                document.getElementById('cartSubtotal').innerText = '$0.00';
+                document.getElementById('cartTax').innerText = '$0.00';
+                document.getElementById('cartTotal').innerText = '$0.00';
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemTotal = calculateItemTotal(item);
+                subtotal += itemTotal;
+
+                const card = document.createElement('div');
+                card.className = 'bg-bloom-50/80 p-3.5 rounded-2xl border border-bloom-200/80 space-y-2 relative';
+
+                let optionsHTML = '';
+                if (item.milk) {
+                    optionsHTML += `<span class="inline-block bg-white px-2 py-0.5 rounded text-[10px] text-bloom-800 border border-bloom-200">🥛 ${item.milk}</span> `;
+                }
+                if (item.toppings && item.toppings.length > 0) {
+                    item.toppings.forEach(t => {
+                        optionsHTML += `<span class="inline-block bg-white px-2 py-0.5 rounded text-[10px] text-bloom-800 border border-bloom-200">🧋 ${t.name} (+$0.75)</span> `;
+                    });
+                }
+                if (item.customOptions && item.customOptions.length > 0) {
+                    item.customOptions.forEach(opt => {
+                        optionsHTML += `<span class="inline-block bg-white px-2 py-0.5 rounded text-[10px] text-bloom-800 border border-bloom-200">✨ ${opt}</span> `;
+                    });
+                }
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h4 class="font-serif-title font-bold text-xs text-bloom-900">${item.name}</h4>
+                            <div class="mt-1 flex flex-wrap gap-1">${optionsHTML}</div>
+                            ${item.comments ? `<p class="text-[11px] text-bloom-600 italic mt-1"> Note: "${item.comments}"</p>` : ''}
+                        </div>
+                        <button onclick="deleteCartItem('${item.cartId}')" class="text-bloom-400 hover:text-red-500 transition p-1">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-2 border-t border-bloom-200/60">
+                        <div class="flex items-center bg-white border border-bloom-200 rounded-full px-2 py-0.5 shadow-sm">
+                            <button onclick="updateCartQty('${item.cartId}', -1)" class="text-bloom-700 font-bold px-1 text-xs">-</button>
+                            <span class="text-xs font-bold text-bloom-900 px-2">${item.quantity}</span>
+                            <button onclick="updateCartQty('${item.cartId}', 1)" class="text-bloom-700 font-bold px-1 text-xs">+</button>
+                        </div>
+                        <span class="font-bold text-xs text-bloom-800">$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            const tax = subtotal * 0.0825;
+            const grandTotal = subtotal + tax;
+
+            document.getElementById('cartSubtotal').innerText = `$${subtotal.toFixed(2)}`;
+            document.getElementById('cartTax').innerText = `$${tax.toFixed(2)}`;
+            document.getElementById('cartTotal').innerText = `$${grandTotal.toFixed(2)}`;
+        }
+
+        // ================= CONSTRUCT ORDER TEXT =================
+        function generateOrderText() {
+            if (cart.length === 0) return null;
+
+            const name = document.getElementById('custName').value.trim() || 'Customer';
+            const phone = document.getElementById('custPhone').value.trim() || 'Not Provided';
+            const pickup = document.getElementById('custTime').value.trim() || 'ASAP';
+
+            let orderText = `🌸 *MexiBloom Order Summary* 🌸\n`;
+            orderText += `Customer: ${name}\n`;
+            orderText += `Phone: ${phone}\n`;
+            orderText += `Pickup: ${pickup}\n`;
+            orderText += `-------------------------\n`;
+
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = calculateItemTotal(item);
+                subtotal += itemTotal;
+
+                orderText += `${index + 1}. ${item.quantity}x ${item.name} ($${itemTotal.toFixed(2)})\n`;
+                if (item.milk) orderText += `   - Milk: ${item.milk}\n`;
+                if (item.toppings && item.toppings.length > 0) {
+                    orderText += `   - Toppings: ${item.toppings.map(t => t.name).join(', ')}\n`;
+                }
+                if (item.customOptions && item.customOptions.length > 0) {
+                    orderText += `   - Options: ${item.customOptions.join(', ')}\n`;
+                }
+                if (item.comments) orderText += `   - Comment: ${item.comments}\n`;
+            });
+
+            const tax = subtotal * 0.0825;
+            const grandTotal = subtotal + tax;
+
+            orderText += `-------------------------\n`;
+            orderText += `Subtotal: $${subtotal.toFixed(2)}\n`;
+            orderText += `Est. Tax: $${tax.toFixed(2)}\n`;
+            orderText += `*TOTAL: $${grandTotal.toFixed(2)}*\n\n`;
+            orderText += `Thank you for choosing MexiBloom in Wills Point, TX!`;
+
+            return orderText;
+        }
+
+        // ================= SEND ORDER VIA SMS =================
+        function sendOrderViaSMS() {
+            if (cart.length === 0) {
+                alert('Your cart is empty! Please add items before placing an order.');
+                return;
+            }
+
+            const custName = document.getElementById('custName').value.trim();
+            if (!custName) {
+                alert('Please enter your name for the order.');
+                document.getElementById('custName').focus();
+                return;
+            }
+
+            const message = generateOrderText();
+            const targetPhone = "16827601868";
+            
+            // Standard SMS URI scheme
+            const encodedMessage = encodeURIComponent(message);
+            const smsUrl = `sms:${targetPhone}?body=${encodedMessage}`;
+
+            window.location.href = smsUrl;
+        }
+
+        // ================= COPY ORDER TO CLIPBOARD =================
+        function copyOrderToClipboard() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const text = generateOrderText();
+            const tempInput = document.createElement("textarea");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            alert("Order summary copied to clipboard! You can now paste it into a text message or email.");
+        }
+    </script>
 </body>
 </html>
